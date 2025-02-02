@@ -1,0 +1,23 @@
+/* Tailwind custom styles */
+body {
+  background-color: #f3f4f6;
+}
+.input-field {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+.btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: #45a049;
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="dashboard" class="max-w-4xl mx-auto p-5 bg-white shadow-md rounded">
+    <div class="flex items-center space-x-4">
+      <img id="user-image" class="w-16 h-16 rounded-full" alt="User Image">
+      <div>
+        <h2 id="user-name" class="text-2xl font-semibold"></h2>
+        <p id="user-email" class="text-sm text-gray-500"></p>
+        <p id="projects-done" class="text-sm text-gray-500"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/dashboardscript.js"></script>
+</body>
+</html>
