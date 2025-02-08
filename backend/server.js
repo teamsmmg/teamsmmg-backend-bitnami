@@ -1,24 +1,36 @@
+const fs = require('fs');
+const https = require('https');
 const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const dashboardRoute = require('./routes/dashboardRoute');
 const authRoute = require('./routes/authRoute');
 const cors = require('cors');
-const bodyParser = require('body-parser');
+
 dotenv.config();
 const app = express();
-// DATABASE IS ADDED FROM THE CONFIG FOLDER 
+
+// Load SSL Certificates from Environment Variables
+const options = {
+   key: fs.readFileSync('/etc/letsencrypt/live/bharatagrawal.shop/privkey.pem'), // Private key
+
+  cert: fs.readFileSync('/etc/letsencrypt/live/bharatagrawal.shop/cert.pem'),    // Certificate
+
+  ca: fs.readFileSync('/etc/letsencrypt/live/bharatagrawal.shop/chain.pem') // Chain file
+};
+
+// DATABASE CONNECTION
 connectDB();
 
+// CORS Setup
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
-// ADD YOUR ROUTE HERE (DONT;T FORGET TO IMPORT IT )
-app.use('/api', authRoute); // Auth routes for signup and login
-app.use('/api', dashboardRoute); // Dashboard routes
-
-// remember the port is 3000
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+// HTTPS Server Setup
+https.createServer(options, app).listen(process.env.PORT || 3000, () => {
+  console.log(`server is running fine `);
 });
+
+// Routes
+app.use('/api', authRoute);
+app.use('/api', dashboardRoute);

@@ -1,0 +1,246 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.card-custom {
+    background-color: #333;
+    border: none;
+    border-radius: 15px;
+}
+
+.card-custom img {
+    border-radius: 15px;
+}
+
+.card-custom .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.btn-custom {
+    background-color: #f0a500;
+    color: white;
+    border-radius: 25px;
+    padding: 10px 20px;
+}
+
+.btn-custom:hover {
+    background-color: #d88d00;
+    text-decoration: none;
+}
+
+.section-header {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.section-subheader {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.testimonials p {
+    font-style: italic;
+}
+
+.testimonials {
+    margin: 50px 0;
+}
+
+.case-study-img {
+    max-width: 100%;
+    border-radius: 15px;
+}
+
+.case-study {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.case-study-text {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: #f0a500;
+}
+
+.timeline-item {
+    margin-bottom: 30px;
+}
+
+.timeline-item .timeline-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f0a500;
+}
+
+.timeline-item .timeline-description {
+    font-size: 1rem;
+    color: #ccc;
+}
+
+.behind-scenes img {
+    border-radius: 10px;
+    max-width: 100%;
+}
+
+.wall-of-fame {
+    background-color: #222;
+    padding: 50px 0;
+}
+
+.client-appreciation {
+    padding: 30px 0;
+    background-color: #333;
+    text-align: center;
+}
+
+.interactive-case-study {
+    cursor: pointer;
+}
+
+.interactive-case-study:hover {
+    background-color: #444;
+}
+
+/* Work Process */
+.work-process {
+    background-color: #1a1a1a;
+    padding: 50px 0;
+    color: #fff;
+}
+
+.work-process .steps {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.work-process .step {
+    width: 200px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.work-process .step img {
+    width: 100%;
+    height: auto;
+}
+
+/* Fun Facts */
+.fun-facts {
+    background-color: #222;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.fun-facts ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.fun-facts li {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+/* Live Project Dashboard */
+.live-dashboard {
+    background-color: #111;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.live-dashboard .progress-bar {
+    width: 100%;
+    height: 30px;
+    background-color: #444;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.live-dashboard .progress {
+    height: 100%;
+    background-color: #4CAF50;
+    border-radius: 5px;
+}
+
+/* Client Gallery */
+.client-gallery {
+    background-color: #333;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.client-gallery .gallery-carousel {
+    display: flex;
+    overflow-x: scroll;
+}
+
+.client-gallery .carousel-item {
+    margin-right: 20px;
+}
+
+/* Client Leaderboard */
+.client-leaderboard {
+    background-color: #444;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.client-leaderboard .leaderboard {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.client-leaderboard .rank {
+    background-color: #555;
+    padding: 20px;
+    margin: 15px;
+    width: 250px;
+    text-align: center;
+}
+
+/* Client Challenge Wall */
+.client-challenge-wall {
+    background-color: #222;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.client-challenge-wall .challenges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.client-challenge-wall .challenge {
+    background-color: #333;
+    padding: 20px;
+    margin: 15px;
+    width: 300px;
+    text-align: center;
+}
+
+.client-challenge-wall .challenge img {
+    width: 100%;
+    height: auto;
+}

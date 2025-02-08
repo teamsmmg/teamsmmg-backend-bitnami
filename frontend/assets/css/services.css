@@ -1,0 +1,135 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #000;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .services {
+    padding: 100px 20px; /* Increased padding at the top */
+  }
+  
+  .section-title {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .section-title h2 {
+    font-size: 32px;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  
+  .section-title p {
+    font-size: 18px;
+    color: #ccc;
+  }
+  
+  .service-cards {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto; /* Add horizontal scroll for cards */
+    padding: 10px 0;
+    margin-bottom: 40px; /* Margin between service sections */
+  }
+  
+  .service-cards::-webkit-scrollbar {
+    height: 10px;
+  }
+  
+  .service-cards::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 10px;
+  }
+  
+  .service-cards::-webkit-scrollbar-track {
+    background: #222;
+  }
+  
+  .card {
+    flex: 0 0 calc(33.333% - 20px); /* Three cards horizontally aligned */
+    background: #111;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-right: 20px;
+  }
+  
+  .card img {
+ 
+    max-width: 60%; /* Adjust image size */
+    height: auto;
+    margin: 0 auto 15px; /* Center the image horizontally in the card */
+    display: block;
+    border-radius: 6px;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+  }
+  
+  .card h4 {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    font-size: 16px;
+    color: #ccc;
+    margin-bottom: 15px;
+  }
+  
+  .card button {
+    
+    padding: 10px 10px;
+   border: none;
+    width: 50%;
+    height: auto;
+    border-radius: 23px;
+    background: black;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0 auto; /* Center the button horizontally */
+  display: block; /* Ensure the button is centered in the card */
+    transition :  background 0.3s;
+  }
+  
+  .card button:hover {
+    
+    border: 2px solid #66FCE1;
+    
+  }
+  
+  /* Scroll animations */
+  [data-aos] {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  [data-aos="zoom-in"] {
+    transform: scale(0.95);
+  }
+  
+  [data-aos].aos-animate {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .card {
+      flex: 0 0 100%; /* Make cards full width on small screens */
+      margin-right: 0;
+    }
+  
+    .card img {
+      max-width: 80%; /* Adjust image size for smaller screens */
+    }
+  }
+  

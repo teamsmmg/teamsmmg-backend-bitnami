@@ -1,0 +1,153 @@
+.card-body {
+    background-color: black;
+}
+.card .btn-primary {
+    border-radius: 23px;
+    background-color: black;
+    color: white;
+    border: 2px solid #66FCF1;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card .btn-primary:hover {
+    background-color: #66FCF1;
+    color: black;
+}
+.card {
+    background-color: black;
+    border: 2px solid white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.card:hover {
+    
+    border-color: #66FCF1;
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+#header {
+    background-color: black;
+}
+
+#projectCarousel {
+    height: 400px;
+
+}
+
+#projects {
+    color: white;
+}
+
+div.container h2 {
+    margin-top: -10px;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+.carousel-caption {
+        background: rgba(0, 0, 0, 0.7);
+        color: #66FCF1;
+        padding: 15px;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-align: center;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.team-section {
+    background: black;
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.team-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.team-section p {
+    font-size: 18px;
+    color: white;
+}
+
+#projects .carousel-item img {
+    max-height: 500px;
+    object-fit: cover;
+}
+
+
+
+
+/* Modal content styling */
+.modal-content {
+    background-color: black;
+    border: none;
+    border-radius: 0; /* Remove rounding for fullscreen look */
+}
+
+/* Custom styled close button */
+.close-btn {
+    background-color: black;
+    color: white;
+    border: 2px solid #66FCF1;
+    border-radius: px;
+    padding: 5px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1051; /* Ensures the button appears on top */
+}
+
+.close-btn:hover {
+    background-color: #66FCF1;
+    color: black;
+}
+
+/* Modal Body Styling */
+.modal-body {
+    overflow-y: auto; /* Enables vertical scrolling */
+    padding: 20px; /* Adds padding around the image */
+    text-align: center;
+}
+
+/* Image Styling */
+.modal-body img {
+    width: 100%; /* Ensures the image fits the modal horizontally */
+    height: auto; /* Maintains aspect ratio */
+    max-width: calc(100% - 40px); /* Accounts for padding */
+    object-fit: contain; /* Prevents distortion of the image */
+    border-radius: 5px; /* Adds slight rounding for aesthetics */
+}
+
+/* Custom Scrollbar Styling */
+.modal-body::-webkit-scrollbar {
+    width: 10px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background-color: #66FCF1;
+    border-radius: 5px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background-color: #2c2c2c;
+}
+.card-img-top {
+    height: 200px; /* Set the desired height */
+    object-fit: cover; /* Ensures the image is cropped */
+    object-position: top; /* Adjusts focus to the top part of the image */
+}
+

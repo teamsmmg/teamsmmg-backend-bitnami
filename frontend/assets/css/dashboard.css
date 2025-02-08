@@ -1,0 +1,303 @@
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: "Arial", sans-serif;
+}
+
+.navbar {
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+  padding: 15px 0;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand {
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.navbar .brand-text {
+  color: #fff;
+}
+
+.navbar .brand-highlight {
+  color: #00ffff;
+}
+
+.navbar-nav .nav-link {
+  color: #fff;
+  font-size: 1.1rem;
+  margin: 0 10px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #00ffff;
+}
+
+.navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #00ffff;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+  width: 100%;
+}
+
+.navbar-toggler {
+  border-color: rgba(0, 255, 255, 0.5);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 255, 255, 0.5)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+@media (max-width: 991px) {
+  .navbar-nav {
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+}
+
+/* dashboard section */
+.section-title {
+  color: #00ffff;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+.card-custom {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid #00ffff;
+  border-radius: 15px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+.card-custom:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 255, 255, 0.2);
+}
+.card-title {
+  color: #00ffff;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+.card-value {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.progress-custom {
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.progress-bar-custom {
+  background-color: #00ffff;
+  transition: width 1s ease-in-out;
+}
+
+/* team member profile section  */
+
+.text-muted {
+  color: #ccc !important;
+}
+.skills {
+  margin: 1rem 0;
+}
+.skill-tag {
+  background-color: #0ff;
+  color: #000;
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  margin-right: 0.5rem;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+.social-icons a {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  transition: color 0.3s ease;
+}
+.social-icons a:hover {
+  color: #0ff;
+}
+.member-description {
+  margin-top: 1rem;
+  font-style: italic;
+  color: #ddd;
+}
+/* task manager section  */
+
+/* Add this to your existing styles.css file */
+
+#taskInput {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid #00ffff;
+  color: #ffffff;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+#taskInput::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+#taskInput:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: #00cccc;
+  box-shadow: 0 0 0 0.2rem rgba(0, 255, 255, 0.25);
+  outline: none;
+}
+
+#taskInput:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+.btn-cyan {
+  background-color: #00ffff;
+  color: #121212;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-cyan:hover {
+  background-color: #00cccc;
+  color: #ffffff;
+}
+
+.task-item {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-left: 4px solid #00ffff;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.task-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(5px);
+}
+
+.task-item .btn-sm {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+.project-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 255, 255, 0.2);
+}
+
+.project-card .card-body {
+  padding: 1.5rem;
+}
+
+.project-card .card-title {
+  color: #00ffff;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-card .card-text {
+  color: #cccccc;
+}
+
+.project-card .progress {
+  height: 8px;
+  margin-top: 1rem;
+}
+
+.project-card .progress-bar {
+  background-color: #00ffff;
+}
+/* comunication section  */
+
+.card-title {
+  color: #00ffff;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.card-text {
+  color: #e0e0e0;
+}
+
+.icon-large {
+  font-size: 3rem;
+  color: #00ffff;
+  opacity: 0.7;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.communication-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.communication-icons i {
+  font-size: 3rem;
+  color: #00ffff;
+  transition: transform 0.3s ease;
+}
+
+.communication-icons i:hover {
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+  }
+
+  .icon-large {
+    font-size: 2rem;
+  }
+}
+.card-custom p {
+  color: #ccc;
+  font-size: 1rem;
+}
+.icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #0ff;
+}  

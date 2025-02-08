@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>MMG | Freelancing</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.ico" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="assets/css/portfolio.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset and Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color:black;
+            color: #E0E0E0;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            color: #BB86FC;
+        }
+
+        a {
+            color: #03DAC6;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container1 {
+            width: 100%;
+            padding: 0 20px; /* Minimal padding on left and right */
+            margin: 0 auto;
+        }
+
+        .header1 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 200%; /* Increase height to 200% */
+            padding: 20px;
+            border-bottom: 1px solid #333;
+            margin-top: 100px;
+            background-color: black; /* Optional: Light background color */
+        }
+        
+        .header-content {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .text-content {
+            flex: 1;
+            text-align: left;
+            padding-right: 20px;
+        }
+        
+        .text-content h1 {
+            font-size: 2.5em; /* Adjust font size as needed */
+            margin: 0;
+            color: #66FCF1;
+        }
+        
+        .text-content p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            color: #666;
+        }
+        
+        .image-content {
+            flex: 0 0 30%; /* Set the width of the image container */
+            text-align: right;
+        }
+        
+        .image-content img {
+            width: 100%;
+            height: auto;
+            max-height: 100%;
+            border-radius: 8px; /* Optional: Rounded corners for the image */
+        }
+        
+
+        /* Sections Styling */
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #1E1E1E;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section h2 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            color: #BB86FC;
+        }
+        
+        .section ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .section ul li {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-left: 4px solid #BB86FC;
+            background-color: #2A2A2A;
+            border-radius: 5px;
+        }
+        
+        .section ul li span {
+            font-weight: bold;
+            color: #03DAC6;
+        }
+        
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px 0;
+            border-top: 1px solid #333;
+            color: #888;
+        }
+
+        footer a {
+            color: #BB86FC;
+        }
+    </style>
+</head>
+<body>
+     <!-- Navbar -->
+    <header id="header" class="header d-flex align-items-center fixed-top">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+            <a href="index.html" class="logo d-flex align-items-center">
+                <img src="assets/Circular_logo.png" alt="">
+            </a>
+
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                  <li><a href="/" class="active">Home</a></li>
+                  <li><a href="/services.html">Services</a></li>
+                  <li><a href="/clients.html">Clients</a></li>
+                  <li><a href="/portfolio.html">Portfolio</a></li>
+                  <li><a href="/team.html">Team</a></li>
+                  <li><a href="blog.html">Blog</a></li>
+                  <li class="dropdown">
+                    <a href="#"><span>Services</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                    <ul>
+                      <li><a href="#">Web Development</a></li>
+                      <li class="Clients">
+                        <a href="#"><span>Design Services</span></a>
+                        <ul>
+                          <li><a href="#">UI/UX Design</a></li>
+                          <li><a href="#">Logo Design</a></li>
+                          <li><a href="#">Graphic Design</a></li>
+                          <li><a href="#">Banner Design</a></li>
+                          <li><a href="#">Custom Templates</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#">E-commerce Development</a></li>
+                      <li><a href="#">SEO & Digital Marketing</a></li>
+                      <li><a href="#">Website Maintenance</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#contact">Contact</a></li>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+              </nav>
+        </div>
+    </header>
+    <!-- Header -->
+    <header class="header1">
+        <div class="header-content">
+            <div class="text-content">
+                <h1>Rules and Regulations</h1>
+                <p>A clear guideline for clients and team members to ensure smooth operations.</p>
+            </div>
+            <div class="image-content">
+                <img src="https://t4.ftcdn.net/jpg/09/05/47/35/360_F_905473523_uTw5BaRrT9Xm5iewGaa6WfKQSddknvxQ.jpg" alt="Header Image">
+            </div>
+        </div>
+    </header>
+    
+
+    <div class="container1">
+        <!-- Client Rules Section -->
+        <section class="section">
+            <h2>Client Rules</h2>
+            <ul>
+                <li>Timely Communication: Clients must ensure clear and timely communication of requirements to avoid delays.</li>
+                <li>Payment Terms: Clients must pay 30% upfront and clear the remaining balance before the final delivery. All payments must be made as per the agreed terms before project milestones.</li>
+                <li>Scope of Work: Any changes to the project scope will require mutual agreement and may involve additional charges. Additional requirements outside the agreed-upon scope will be charged separately.</li>
+                <li>Content Delivery: Clients must provide necessary content (logos, text, images) on time to avoid project delays.</li>
+                <li>Meeting Schedule: A meeting will be conducted with the consultation of the project manager and the client (offline or online).</li>
+                <li>Timely Feedback: Clients must provide feedback within the specified timeline to ensure smooth progress.</li>
+                <li>Revisions: Maximum of 3 revisions are allowed; additional revisions will incur extra charges. Revision requests will not be accepted beyond 7 days after delivery unless a maintenance contract has been signed.</li>
+                <li>Ownership Clause: All designs and assets created will be used exclusively for the purpose stated in the contract only. Ownership of the project will transfer after full payment.</li>
+                <li>No Source Code Access Before Payment: The source code will not be shared until the final payment is made.</li>
+                <li>Custom Plugins or APIs: An upfront agreement must be signed for additional charges related to custom development.</li>
+                <li>Copyright: If any copyrighted images or assets are used by the agency, it is their responsibility to manage them. If provided by the client, it will be the client’s responsibility.</li>
+                <li>Template Selection: The client will finalize the template, and pricing will be decided accordingly. Once selected, the template cannot be changed.</li>
+                <li>Delay in Submission: If there is a delay in the final project submission, the agency will provide extra services like maintenance.</li>
+                <li>Error Resolution: If there is any problem on the client’s side (project-related), the agency will address it promptly.</li>
+                <li>Early Termination Fee: If the client cancels the project, full payment for the work already completed will be required.</li>
+                <li>Non-refundable Policy: Payments are non-refundable once the project is halfway through.</li>
+                <li>Technology Limitations: The agency will not be responsible for limitations or issues with third-party platforms (e.g., WordPress plugin bugs or updates).</li>
+                <li>Support Policy: Free support for 30 days post-delivery; additional support will be chargeable. Charges may apply for unnecessary or irrelevant requests during the free support period.</li>
+                <li>Confidentiality: Both parties agree to keep all project details confidential. The agency will not disclose client information or project details to third parties without prior consent.</li>
+                <li>Data Backup Policy: The agency is not liable for storing or backing up client project data post-delivery. Clients must ensure backups of their files.</li>
+                <li>Liability Limitation: The agency will not be held liable for any indirect, incidental, or consequential damages resulting from the project.</li>
+                <li>Usage Rights Restriction: Even after the project is delivered, the client cannot use the agency’s logo or name without prior written permission.</li>
+                <li>Termination Clause: The agency reserves the right to terminate the project if the client violates terms, delays payments, or engages in misconduct.</li>
+                <li>Penalty for Misconduct: The agency reserves the right to terminate the project if the client uses abusive language or displays unprofessional behavior.</li>
+                <li>Contract Requirement: For projects exceeding ₹50,000, the client must submit an affidavit or similar document.</li>
+                <li>Final Costing: The costing given by the software is not final. The final project cost will be decided after a meeting between the client and the project manager.</li>
+            </ul>
+        </section>
+        
+    
+        <!-- Team Rules Section -->
+        <section class="section">
+            <h2>Team Rules</h2>
+            <ul>
+                <li>Work Ethic: All team members must adhere to professional standards and maintain work ethics. No pirated software, unethical hacking, or illegal practices are allowed in any project.</li>
+                <li>Deadlines: Projects and tasks must be completed within the defined deadlines to maintain client satisfaction. Team leads will face accountability for delays, and bonuses may be canceled.</li>
+                <li>Communication: Keep all communication clear and consistent through the designated channels. Clients have the right to receive updates on their project at any time.</li>
+                <li>Data Security: Ensure that all client data is handled securely and never shared outside the team. Conduct regular internal audits to maintain data and code security.</li>
+                <li>Code of Conduct: Respect all team members and clients, maintaining a positive and inclusive work environment. Maintain a polite and professional tone in all interactions.</li>
+                <li>Confidentiality: Maintain strict confidentiality of client data and projects. All employees must sign a Non-Disclosure Agreement (NDA).</li>
+                <li>Quality Assurance: Each project must pass quality testing before delivery, including 3-level testing (unit testing, integration testing, and client acceptance testing).</li>
+                <li>Payment Policy: No work will start without an upfront payment of 30% of the total cost. The agency will retain ownership of the source code until full payment is made.</li>
+                <li>Feedback Implementation: Client feedback should be incorporated unless it exceeds the initial scope of work.</li>
+                <li>Intellectual Property Protection: Do not reuse or share client-specific code, designs, or data.</li>
+                <li>Security: The agency will ensure full security of the project during the project timeline or maintenance period.</li>
+                <li>Zero Tolerance for Code Theft: Strict action, including termination, will be taken for unauthorized use of third-party code.</li>
+                <li>Documentation Mandate: Complete documentation and Standard Operating Procedures (SOP) are mandatory for every project.</li>
+                <li>Daily Reporting: Team members must submit daily progress reports.</li>
+                <li>Backup Protocol: All projects must have a 2-layered backup system (local and cloud).</li>
+                <li>Data Security Audits: Regular internal audits must be conducted to ensure data and code security.</li>
+                <li>Testing Deadline: Every project must pass 3-level testing (unit testing, integration testing, and client acceptance testing) before final submission.</li>
+                <li>Bug-Free Guarantee: If any bugs are detected post-delivery due to the agency’s fault, they will be fixed within 15 days at no cost.</li>
+                <li>Skill Improvement Requirement: Team members must complete a certification in a new skill or technology every 3 months.</li>
+                <li>Project Handover Checklist: Before final delivery, a comprehensive handover checklist must be followed, including files, credentials, and documentation.</li>
+                <li>Client Satisfaction Review: Before closing the project, a formal review session must be conducted with the client to ensure satisfaction and address concerns.</li>
+                <li>Performance Metrics Tracking: Every project’s performance must be tracked post-delivery for 30 days to ensure quality and gather insights for future improvements.</li>
+                <li>Emergency Task Protocol: An emergency protocol must be established for handling urgent requests or technical failures during the project timeline.</li>
+                <li>Internal Feedback Sessions: Monthly team feedback sessions must be held to improve work processes and resolve internal bottlenecks.</li>
+            </ul>
+        </section>
+        
+    </div>
+    <!-- Footer -->
+    <footer id="footer" class="footer dark-background">
+        <div class="container">
+          <h3 class="sitename">MMG</h3>
+          <p>MMG is dedicated to delivering innovative solutions that empower businesses and individuals alike. Our team focuses on creating high-quality services that drive success, ensuring every project exceeds expectations. Join us on a journey of progress and excellence.</p>
+    
+          <div class="social-links d-flex justify-content-center">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-skype"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+          <div class="container">
+            <div class="copyright">
+              <span>Copyright</span> <strong class="px-1 sitename">MMG</strong> <span>All Rights Reserved 2024</span>
+            </div>
+           
+          </div>
+        </div>
+      </footer>
+      
+</body>
+</html>

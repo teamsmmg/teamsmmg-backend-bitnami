@@ -1,24 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div id="dashboard" class="max-w-4xl mx-auto p-5 bg-white shadow-md rounded">
-    <div class="flex items-center space-x-4">
-      <img id="user-image" class="w-16 h-16 rounded-full" alt="User Image">
-      <div>
-        <h2 id="user-name" class="text-2xl font-semibold"></h2>
-        <p id="user-email" class="text-sm text-gray-500"></p>
-        <p id="projects-done" class="text-sm text-gray-500"></p>
-      </div>
-    </div>
-  </div>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeamsMMG Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/dashboard.css">
+   
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" data-aos="fade-right">
+                <span class="brand-text">Teams</span><span class="brand-highlight">MMG</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item" data-aos="fade-down" data-aos-delay="100">
+                        <a class="nav-link active" href="#">Dashboard</a>
+                    </li>
+                    <li class="nav-item" data-aos="fade-down" data-aos-delay="200">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item" data-aos="fade-down" data-aos-delay="300">
+                        <a class="nav-link" href="#tasks">Tasks</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-  <script src="/js/dashboardscript.js"></script>
-</body>
+
+    <main class="main container mt-5">
+     <!-- Dashboard Section -->
+    <section id="dashboard" class="py-5">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-down">Dashboard</h2>
+            <div class="row g-4">
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-custom">
+                        <h3 class="card-title">Pending Tasks</h3>
+                        <p class="card-value">12</p>
+                        <p>Tasks Pending</p>
+                        <div class="progress progress-custom">
+                            <div class="progress-bar progress-bar-custom" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-custom">
+                        <h3 class="card-title">Active Projects</h3>
+                        <p class="card-value">5</p>
+                        <p>Projects in Progress</p>
+                        <div class="progress progress-custom">
+                            <div class="progress-bar progress-bar-custom" role="progressbar" style="width: 0%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-custom">
+                        <h3 class="card-title">Upcoming Deadlines</h3>
+                        <p class="card-value">3</p>
+                        <p>Deadlines this Week</p>
+                        <div class="progress progress-custom">
+                            <div class="progress-bar progress-bar-custom" role="progressbar" style="width: 0%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-custom">
+                        <h3 class="card-title">Notifications</h3>
+                        <p class="card-value">2</p>
+                        <p>Important Updates</p>
+                        <div class="progress progress-custom">
+                            <div class="progress-bar progress-bar-custom" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Team Member Profile Section -->
+     <section id="team" data-aos="fade-up" data-aos-duration="1000">
+        <h2 class="section-title">Team Member Profile</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-8" data-aos="flip-left" data-aos-delay="100">
+                <div class="card card-custom">
+                    <img src="" class="card-img-top" id="user-image" >
+                    <div class="card-body">
+                        <h3 class="card-title" id="user-name"></h3>
+                        <h3 class="card-title" id="user-email"></h3>
+                        <p class="text-muted" id="user-role" ></p>
+                        <div class="skills" id="user-skills">
+                        </div>
+                        </div>
+                        <p class="member-description">
+                            John is a passionate frontend developer with 5 years of experience in creating responsive and user-friendly web applications. He specializes in modern JavaScript frameworks and has a keen eye for design.
+                        </p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-codepen"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+      <!-- Task Management Section -->
+      <section id="tasks" class="mb-5" data-aos="fade-left">
+        <h2 class="section-title">Task Management</h2>
+        <p class="mb-4">Manage tasks, assign priorities, and track task status.</p>
+        <div class="task-list" id="taskList"></div>
+        <form id="taskForm" class="mt-4">
+            <div class="mb-3">
+                <input type="text" class="form-control" id="taskInput" placeholder="Enter a new task" required>
+            </div>
+            <button type="submit" class="btn btn-cyan">Add Task</button>
+        </form>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" data-aos="zoom-in">
+        <h2 class="section-title">Projects</h2>
+        <div class="row g-4" id="projects-container">
+            <!-- Project cards will be dynamically added here -->
+        </div>
+        <div class="row g-4" id="projectList">
+            <!-- Project cards will be dynamically added here -->
+        </div>
+    </section>
+
+       <!-- Communication Section -->
+       <section id="communication" class="mb-5" data-aos="fade-up">
+        <h2 class="section-title">Communication</h2>
+        <p class="lead">Stay updated with announcements and important notifications.</p>
+        <div class="communication-icons">
+            <i class="bi bi-bell-fill"></i>
+            <i class="bi bi-chat-dots-fill"></i>
+            <i class="bi bi-envelope-fill"></i>
+        </div>
+    </section>
+
+    <!-- Reporting & Analytics Section -->
+    <section id="reporting" class="mb-5" data-aos="fade-up">
+        <h2 class="section-title">Reporting & Analytics</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card card-custom h-100" data-aos="flip-left" data-aos-delay="100">
+                    <div class="card-body">
+                        <h3 class="card-title">Task Completion Reports</h3>
+                        <p class="card-text">View detailed task completion rates and analytics.</p>
+                        <i class="bi bi-bar-chart-fill icon-large"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-custom h-100" data-aos="flip-left" data-aos-delay="200">
+                    <div class="card-body">
+                        <h3 class="card-title">Individual Performance</h3>
+                        <p class="card-text">Analyze team member contributions and KPIs.</p>
+                        <i class="bi bi-person-lines-fill icon-large"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-custom h-100" data-aos="flip-left" data-aos-delay="300">
+                    <div class="card-body">
+                        <h3 class="card-title">Productivity Reports</h3>
+                        <p class="card-text">Weekly and Monthly productivity insights.</p>
+                        <i class="bi bi-graph-up-arrow icon-large"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Attendance & Leave Management Section -->
+    <section id="attendance" data-aos="fade-right">
+        <h2 class="section-title">Attendance & Leave Management</h2>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card card-custom h-100" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card-body">
+                        <h3 class="card-title">Attendance Trackin  <ul id="attendance-list"></ul></h3>
+                        <p class="card-text">Track daily attendance logs and working hours.</p>
+                        <i class="bi bi-calendar-check-fill icon-large"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-custom h-100" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="card-body">
+                        <h3 class="card-title">Leave Requests & Approvals <ul id="leave-requests-list"></ul></h3>
+                        <p class="card-text">View and manage leave requests seamlessly.</p>
+                        <i class="bi bi-calendar2-x-fill icon-large"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Documentation & Resources Section -->
+<section id="resources">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-down">Documentation & Resources</h2>
+        <div class="row">
+            <div class="col-md-4" data-aos="flip-left" data-aos-delay="100">
+                <div class="card card-custom">
+                    <i class="icon fas fa-book"></i>
+                    <h3 class="card-title">Project Guidelines</h3>
+                    <ul id="project-guidelines-list"></ul>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
+                <div class="card card-custom">
+                    <i class="icon fas fa-code"></i>
+                    <h3 class="card-title">Coding Standards</h3>
+                    <p>Best practices for code development and review, promoting clean, efficient, and maintainable code.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="flip-left" data-aos-delay="300">
+                <div class="card card-custom">
+                    <i class="icon fas fa-cogs"></i>
+                    <h3 class="card-title">API Documentation</h3>
+                    <p>Explore and integrate project APIs efficiently with our comprehensive and user-friendly documentation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+      <!-- Payment & Incentives Section
+      <section id="payment" data-aos="fade-left">
+        <h2 class="section-title">Payment & Incentives</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card card-custom">
+              <h3 class="card-title">Salary Information</h3>
+              <p>View and manage salary details securely.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card card-custom">
+              <h3 class="card-title">Bonuses/Incentives</h3>
+              <p>Track and claim bonuses or incentive payouts.</p>
+            </div>
+          </div>
+        </div>
+      </section> -->
+
+      <!-- Roles-Based Access Section -->
+      <!-- <section id="roles" data-aos="zoom-in">
+        <h2 class="section-title">Roles-Based Access</h2>
+        <p>Customized dashboards for different roles in the organization.</p>
+        <ul>
+          <li>Admin Dashboard</li>
+          <li>Developer Dashboard</li>
+          <li>Project Manager Dashboard</li>
+        </ul>
+      </section> -->
+
+      <!-- Feedback & Issue Tracking Section -->
+      <!-- <section id="feedback" data-aos="fade-up">
+        <h2 class="section-title">Feedback & Issue Tracking</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card card-custom">
+              <h3 class="card-title">Task Feedback</h3>
+              <p>Provide and review feedback for task improvements.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card card-custom">
+              <h3 class="card-title">Issue Reporting System</h3>
+              <p>Report and track the resolution status of issues.</p>
+            </div>
+          </div>
+        </div>
+      </section> -->
+    </main>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+    <script src="./js/dashboardscript.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
 </html>

@@ -6,7 +6,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     const password = document.getElementById('password').value;
   
     try {
-      const response = await fetch('http://localhost:3000/api/login', {
+      const response = await fetch('https://bharatagrawal.shop:3000/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
