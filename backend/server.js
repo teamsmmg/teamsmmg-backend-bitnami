@@ -5,6 +5,15 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const dashboardRoute = require('./routes/dashboardRoute');
 const authRoute = require('./routes/authRoute');
+const userAuthRoute = require('./routes/userAuthRoute');
+const formRoutes = require("./routes/formRoute");
+const clientRoutes = require("./routes/clientRoute");
+const teamRoutes = require('./routes/teamsRoute');
+const serviceRoutes = require("./routes/serviceRoute");
+const blogRoutes = require('./routes/blogRoutes');
+const adminBlogRoutes = require('./routes/adminBlogRoutes');
+const portfolioRoute = require('./routes/portfolioRoute');
+const userRoutes = require('./routes/userDashboardRoute');
 const cors = require('cors');
 
 dotenv.config();
@@ -34,3 +43,12 @@ https.createServer(options, app).listen(process.env.PORT || 3000, () => {
 // Routes
 app.use('/api', authRoute);
 app.use('/api', dashboardRoute);
+app.use('/api', userAuthRoute);
+app.use("/api", clientRoutes);
+app.use("/api/form", formRoutes);
+app.use('/api/teams', teamRoutes);
+app.use("/api", serviceRoutes);
+app.use('/api/blogs', blogRoutes);
+app.use('/api/admin/blogs', adminBlogRoutes);
+app.use('/api/portfolio', portfolioRoute);
+app.use('/api/user', userRoutes);

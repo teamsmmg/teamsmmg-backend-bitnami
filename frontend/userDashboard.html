@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .dashboard-card {
+            background-color: #111;
+            border: 1px solid #00ffff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .stats-card {
+            background: linear-gradient(45deg, #111, #222);
+            border: 1px solid #00ffff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card {
+            background-color: #111;
+            border: 1px solid #00ffff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .stats-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #00ffff;
+        }
+
+        .stats-label {
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        h2, h3, h4 {
+            color: #00ffff;
+        }
+
+        hr {
+            border-color: #00ffff;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid py-4">
+        <h2 class="mb-4"><i class="bi bi-speedometer2"></i> User Dashboard</h2>
+        
+        <!-- Stats Row -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="stats-card">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="stats-label">Total Projects</div>
+                            <div class="stats-value">0</div>
+                        </div>
+                        <i class="bi bi-folder text-info fs-1"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stats-card">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="stats-label">Active Projects</div>
+                            <div class="stats-value">0</div>
+                        </div>
+                        <i class="bi bi-lightning text-warning fs-1"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stats-card">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="stats-label">Completed</div>
+                            <div class="stats-value">0</div>
+                        </div>
+                        <i class="bi bi-check-circle text-success fs-1"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Info Card -->
+        <div class="dashboard-card mb-4">
+            <h3 class="mb-4"><i class="bi bi-person"></i> User Information</h3>
+            <div class="row" id="userInfo">
+                <!-- User info will be populated here -->
+            </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="dashboard-card">
+            <h3 class="mb-4"><i class="bi bi-kanban"></i> Projects</h3>
+            <div id="projects">
+                <!-- Projects will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert('You are not logged in!');
+                window.location.href = 'userLogin.html';
+                return;
+            }
+
+            try {
+                const response = await fetch('https://bharatagrawal.shop:3000/api/user/dashboard', {
+                    method: 'GET',
+                    headers: { 'Authorization': token }
+                });
+
+                const user = await response.json();
+
+                if (response.ok) {
+                    // Update user info
+                    document.getElementById('userInfo').innerHTML = `
+                        <div class="col-md-3 mb-3">
+                            <strong class="text-info">Name:</strong>
+                            <div>${user.name}</div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <strong class="text-info">Email:</strong>
+                            <div>${user.email}</div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <strong class="text-info">Phone:</strong>
+                            <div>${user.phoneNumber}</div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <strong class="text-info">Company:</strong>
+                            <div>${user.companyName || 'N/A'}</div>
+                        </div>
+                    `;
+
+                    // Update stats
+                    const totalProjects = user.projects.length;
+                    const activeProjects = user.projects.filter(p => new Date(p.deadline) > new Date()).length;
+                    const completedProjects = totalProjects - activeProjects;
+
+                    document.querySelectorAll('.stats-value')[0].textContent = totalProjects;
+                    document.querySelectorAll('.stats-value')[1].textContent = activeProjects;
+                    document.querySelectorAll('.stats-value')[2].textContent = completedProjects;
+
+                    // Update projects
+                    let projectHTML = '';
+                    user.projects.forEach((project, index) => {
+                        projectHTML += `
+                            <div class="project-card">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h4 class="m-0">
+                                        <i class="bi bi-folder2-open"></i> 
+                                        ${project.projectName}
+                                    </h4>
+                                    <span class="badge bg-info">${project.projectType.join(', ')}</span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><i class="bi bi-bullseye"></i> <strong>Purpose:</strong> ${project.projectPurpose}</p>
+                                        <p><i class="bi bi-cash"></i> <strong>Budget:</strong> ${project.budget}</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><i class="bi bi-calendar"></i> <strong>Deadline:</strong> ${new Date(project.deadline).toLocaleDateString()}</p>
+                                        <p><i class="bi bi-code-slash"></i> <strong>Tech Stack:</strong> ${project.techStack || 'N/A'}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+
+                    document.getElementById('projects').innerHTML = projectHTML;
+                } else {
+                    alert(user.message || 'Failed to fetch user data.');
+                }
+            } catch (error) {
+                console.error('Error fetching dashboard data:', error);
+                alert('An error occurred while fetching data.');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -136,112 +136,11 @@
                         style="color: #00bcd4; text-decoration: underline;">portfolio</a>. Let's make something
                     great together!</p>
             </div>
-            <div class="row gy-4">
-                <!-- Card 1 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card bg-dark text-white">
-                        <img src="./assets/img/Telemedicine_platforms_template_10.png"
-                            class="card-img-top" alt="Smooth Smoothies">
-                        <div class="card-body">
-                            <h5 class="card-title">Telemedicine Platforms</h5>
-                            <p class="card-text">Easy-to-use platforms for virtual consultations,and prescriptions, enhancing healthcare accessibility.</p>
-                            <button type="button" class="btn btn-primary view-project-btn" data-bs-toggle="modal"
-                                data-bs-target="#projectModal">
-                                View project
-                            </button>
-                        </div>
-                    </div>
+            <div class="row gy-4" id="projects-container">
+                
                 </div>
-                <!-- Card 2 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card bg-dark text-white">
-                        <img src="./assets/img/hotel_managment.png"
-                            class="card-img-top" alt="Snazzy Fashion">
-                        <div class="card-body">
-                            <h5 class="card-title">Hotel Managment</h5>
-                            <p class="card-text">Streamlined systems for bookings and guest services to improve hospitality operations.</p>
-                            <button type="button" class="btn btn-primary view-project-btn" data-bs-toggle="modal"
-                                data-bs-target="#projectModal">
-                                View project
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 3 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card bg-dark text-white">
-                        <img src="./assets/img/clothing.png"
-                            class="card-img-top" alt="Hero Block Gallery">
-                        <div class="card-body">
-                            <h5 class="card-title">Clothing</h5>
-                            <p class="card-text">Trendy templates for showcasing fashion, ideal for e-commerce and modern brand presentation.</p>
-                            <button type="button" class="btn btn-primary view-project-btn" data-bs-toggle="modal"
-                                data-bs-target="#projectModal">
-                                View project
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="card bg-dark text-white">
-                        <img src="./assets/img/gym.png"
-                            class="card-img-top" alt="Smooth Smoothies">
-                        <div class="card-body">
-                            <h5 class="card-title">GYM</h5>
-                            <p class="card-text">Fitness-focused designs with schedules and workout guides to inspire healthy living.</p>
-                            <button type="button" class="btn btn-primary view-project-btn" data-bs-toggle="modal"
-                                data-bs-target="#projectModal">
-                                View project
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="card bg-dark text-white">
-                        <img src="assets/img/food&drink.png"
-                            class="card-img-top" alt="Smooth Smoothies">
-                        <div class="card-body">
-                            <h5 class="card-title">Food & Drink</h5>
-                            <p class="card-text">Eye-catching templates for menus, specials, and reviews, perfect for cafes and delivery services.</p>
-                            <button type="button" class="btn btn-primary view-project-btn" data-bs-toggle="modal"
-                                data-bs-target="#projectModal">
-                                View project
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="card bg-dark text-white">
-                        <img src="./assets/img/coaching.png"
-                            class="card-img-top" alt="Smooth Smoothies">
-                        <div class="card-body">
-                            <h5 class="card-title">Consultancy</h5>
-                            <p class="card-text">Professional designs to showcase services, expertise, and testimonials, building client trust.</p>
-                            <button type="button" class="btn btn-primary view-project-btn" data-bs-toggle="modal"
-                                data-bs-target="#projectModal">
-                                View project
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card with View Project Button -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card bg-dark text-white">
-                        <img src="./assets/img/restaurant.png"
-                            class="card-img-top" alt="Smooth Smoothies">
-                        <div class="card-body">
-                            <h5 class="card-title">Restaurant</h5>
-                            <p class="card-text">Interactive menus, reservations, and stunning visuals to boost your restaurant's online presence..</p>
-                            <!-- View Project Button -->
-                            <button type="button" class="btn btn-primary view-project-btn" data-bs-toggle="modal"
-                                data-bs-target="#projectModal">
-                                View project
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+              
+                
         </div>
     </section>
 <!-- Modal for Preview -->
@@ -285,7 +184,50 @@
   
 
 
+<script>
+    const API_URL = 'https://bharatagrawal.shop:3000/api/portfolio';
 
+// Fetch and display projects
+async function fetchProjects() {
+    const response = await fetch(API_URL);
+    const projects = await response.json();
+
+    const container = document.getElementById('projects-container');
+    container.innerHTML = ''; // Clear previous content
+
+    projects.forEach(project => {
+        const projectCard = document.createElement('div');
+        projectCard.classList.add('project-card');
+
+        projectCard.innerHTML = `
+            <img src="${project.image}" alt="${project.title}">
+            <h3>${project.title}</h3>
+            <p>${project.description}</p>
+            <a href="${project.link}" target="_blank">View Project</a>
+           
+                <div class="col-lg-4 col-md-6">
+                    <div class="card bg-dark text-white">
+                        <img src="${project.image}" alt="${project.title}"
+                            class="card-img-top" alt="Smooth Smoothies">
+                        <div class="card-body">
+                            <h5 class="card-title">${project.title}</h5>
+                            <p class="card-text">${project.description}</p>
+                            <a href="${project.link}" target="_blank">View Project</a>
+                            <button type="button" class="btn btn-primary view-project-btn" data-bs-toggle="modal"
+                                data-bs-target="#projectModal">
+                                View project
+                            </button>
+                        </div>
+                    </div>
+        `;
+
+        container.appendChild(projectCard);
+    });
+}
+
+fetchProjects();
+
+</script>
 
     <script>
         document.querySelectorAll('.view-project-btn').forEach(button => {

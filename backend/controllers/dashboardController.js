@@ -1,6 +1,5 @@
 const Member = require('../models/userModel');
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
 
 // Create JWT Token
 const createToken = (email) => {
@@ -19,7 +18,15 @@ const getDashboardData = async (req, res) => {
     res.json({
       name: member.name,
       email: member.email,
-      
+      profilePhoto: member.profilePhoto,
+      roleInTeam: member.roleInTeam,
+      skills: member.skills,
+      description: member.description,
+      projects: member.projects,
+      attendance: member.attendance,
+      leaveRequests: member.leaveRequests,
+      projectGuidelines: member.projectGuidelines,
+      createdAt: member.createdAt,
     });
   } catch (error) {
     console.error(error);

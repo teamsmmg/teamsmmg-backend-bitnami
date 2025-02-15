@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Add Team Member</title>
+   
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            margin: auto;
+        }
+        
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Add Team Member</h1>
+    <form id="teamForm" enctype="multipart/form-data">
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="text" id="skills" placeholder="Skills (comma separated)" required>
+        <input type="text" id="threads" placeholder="Threads Profile">
+        <input type="text" id="facebook" placeholder="Facebook Profile">
+        <input type="text" id="instagram" placeholder="Instagram Profile">
+        <input type="text" id="linkedin" placeholder="LinkedIn Profile">
+        <input type="file" id="image" required>
+        <button type="submit">Add Member</button>
+    </form>
+
+    <script src="../../js/teamsAdminScript.js"></script>
+</body>
+</html>

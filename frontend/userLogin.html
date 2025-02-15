@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMG Sign In </title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: rgb(10, 10, 10);
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        /* Header Styles */
+        header {
+            padding: 20px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .signin-btn {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .signin-btn:hover {
+            background: rgba(59, 130, 246, 0.2);
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 40px 0;
+        }
+
+        .signin-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .form-section {
+            flex: 1;
+            max-width: 460px;
+        }
+
+        .illustration {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .illustration img {
+            max-width: 100%;
+            height: auto;
+            filter: brightness(0.9) contrast(1.1);
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        h1 span {
+            color: #00FFFF;
+        }
+
+        .subtitle {
+            color: #94A3B8;
+            margin-bottom: 30px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #E2E8F0;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: white;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #3B82F6;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-top: -16px;
+            margin-bottom: 24px;
+        }
+
+        .forgot-password a {
+            color: #00FFFF;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .signin-btn-main {
+            background: #00FFFF;
+            color: rgb(55, 41, 41);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+
+        .signin-btn-main:hover {
+            background: black;
+            color: #fff;
+        }
+
+        .signup-link {
+            text-align: center;
+            font-size: 14px;
+            color: #94A3B8;
+        }
+
+        .signup-link a {
+            color: #00FFFF;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Background Elements */
+        .bg-element {
+            position: absolute;
+            opacity: 0.03;
+            z-index: -1;
+        }
+
+        .bg-element:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            font-size: 120px;
+        }
+
+        .bg-element:nth-child(2) {
+            bottom: 15%;
+            right: 10%;
+            font-size: 150px;
+        }
+
+        @media (max-width: 768px) {
+            .signin-container {
+                flex-direction: column-reverse;
+                padding: 20px 0;
+            }
+
+            .illustration {
+                max-width: 80%;
+                margin: 0 auto;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <a href="#" class="logo" data-aos="fade-right">TeamsMMG</a>
+               
+            </nav>
+        </header>
+
+        <main>
+            <div class="signin-container">
+                <div class="form-section" data-aos="fade-right" data-aos-delay="100">
+                    <h1>Welcome to <span>TeamsMMG</span></h1>
+                    <p class="subtitle">Sign in to access your account and explore thousands of freelance opportunities.</p>
+                    
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="name@company.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" placeholder="Enter your password" required>
+                        </div>
+
+                        <div class="forgot-password">
+                            <a href="#">Forgot password?</a>
+                        </div>
+
+                        <button type="submit" class="signin-btn-main">Sign In</button>
+                        
+                        <p class="signup-link">
+                            Don't have an account? <a href="UserSignup.html">Create account</a>
+                        </p>
+                    </form>
+                </div>
+
+                <div class="illustration" data-aos="fade-left" data-aos-delay="200">
+                    <img src="./img/photo1.png" alt="Freelancer illustration">
+                </div>
+            </div>
+
+        </main>
+    </div>
+<script src="./js/userLoginscript.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: 'ease-out-cubic'
+        });
+    </script>
+</body>
+</html>

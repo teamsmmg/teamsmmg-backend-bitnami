@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: black;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    
+    .blog-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    
+    .blog-card {
+      background-color: black;
+      border: 2px solid cyan;
+      border-radius: 10px;
+      padding: 20px;
+      width: 300px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .blog-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .blog-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    
+    .blog-title {
+      color: cyan;
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+    
+    .blog-description {
+      color: #ccc;
+      font-size: 0.9em;
+      margin-bottom: 10px;
+    }
+    
+    .read-more {
+      display: inline-block;
+      background-color: cyan;
+      color: black;
+      padding: 5px 10px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .blog-card p {
+      color: #aaa;
+      font-size: 0.8em;
+      margin: 5px 0;
+    }
+    
+    .blog-card a {
+      font-weight: lighter;
+      color: white;
+      text-decoration: none;
+    }
+    
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+    
+    .modal-content {
+      background-color: #fefefe;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 800px;
+      border-radius: 10px;
+    }
+    
+    .close-btn {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    
+    .close-btn:hover,
+    .close-btn:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  
+    /* modal  */
+    .modal-content{
+      background-color: black;
+    }
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .modal-blog-details {
+      background-color: #000;
+      border: 2px solid #00ffff;
+      border-radius: 10px;
+      padding: 30px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 4px 6px rgba(0, 255, 255, 0.1);
+      color: #fff;
+    }
+    
+    .modal-title {
+      font-size: 24px;
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: #00ffff;
+    }
+    
+    .modal-thumbnail {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    
+    .modal-description {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    
+    .modal-author,
+    .modal-publish-date {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    
+    .author-link {
+      color: #00ffff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .author-link:hover {
+      color: #00cccc;
+      text-decoration: underline;
+    }
+    
+    @media (max-width: 480px) {
+      .modal-blog-details {
+        padding: 20px;
+      }
+    
+      .modal-title {
+        font-size: 20px;
+      }
+    
+      .modal-description {
+        font-size: 14px;
+      }
+    }
+    
+    
+  </style>
+</head>
+<body>
+    <h1>Blogs</h1>
+    <div id="blog-container" class="blog-container"></div>
+  
+    <!-- Modal for detailed blog view -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span id="close-modal" class="close-btn">&times;</span>
+        <div id="modal-blog-details"></div>
+      </div>
+    </div>
+  <script src="./js/blogScript.js"></script>
+</body>
+</html>

@@ -1,37 +1,3 @@
-/**
-* Template Name: Selecao
-* Template URL: https://bootstrapmade.com/selecao-bootstrap-template/
-* Updated: Aug 07 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-  // Get references to the theme stylesheet and the toggle button
-  const themeStylesheet = document.getElementById("theme-stylesheet");
-  const toggleButton = document.getElementById("toggle-theme");
-
-  // Check localStorage for the saved theme preference
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme) {
-    themeStylesheet.href = savedTheme;
-    toggleButton.textContent = savedTheme.includes("main_light.css")
-      ? "Switch to Dark Mode"
-      : "Switch to Light Mode";
-  }
-
-  // Add an event listener to toggle the theme
-  toggleButton.addEventListener("click", () => {
-    if (themeStylesheet.href.includes("main_light.css")) {
-      // Switch to dark mode
-      themeStylesheet.href = "assets/css/main.css";
-      toggleButton.textContent = "Light Mode";
-      localStorage.setItem("theme", "assets/css/main.css"); // Save preference
-    } else {
-      // Switch to light mode
-      themeStylesheet.href = "assets/css/main_light.css";
-      toggleButton.textContent = "Dark Mode";
-      localStorage.setItem("theme", "assets/css/main_light.css"); // Save preference
-    }
-  });
 (function() {
   "use strict";
 
@@ -69,7 +35,6 @@
         mobileNavToogle();
       }
     });
-
   });
 
   /**
@@ -165,7 +130,6 @@
         }
       }, false);
     });
-
   });
 
   /**
@@ -222,7 +186,7 @@
       } else {
         navmenulink.classList.remove('active');
       }
-    })
+    });
   }
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);

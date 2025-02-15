@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: black;
+            padding: 20px;
+        }
+
+        .form-container {
+            background-color: #000000;
+            border-radius: 10px;
+            padding: 30px;
+            color: white;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .form-control, .form-select {
+            background-color: #1a1a1a;
+            border: 1px solid cyan;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background-color: #1a1a1a;
+            border-color: cyan;
+            box-shadow: 0 0 0 0.25rem rgba(0, 255, 255, 0.25);
+            color: white;
+        }
+
+        .form-select option {
+            background-color: #1a1a1a;
+            color: white;
+        }
+
+        .form-check-input {
+            border-color: cyan;
+        }
+
+        .form-check-input:checked {
+            background-color: cyan;
+            border-color: cyan;
+        }
+
+        .btn-submit {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border: 2px solid cyan;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            background-color: cyan;
+            color: black;
+        }
+
+        select[multiple] {
+            height: 120px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form id="project-form">
+            <h2 class="text-center mb-4">Submit Project Details</h2>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="phoneNumber" class="form-label">Phone Number</label>
+                    <input type="text" class="form-control" id="phoneNumber" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="companyName" class="form-label">Company Name (Optional)</label>
+                    <input type="text" class="form-control" id="companyName">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="projectName" class="form-label">Project Name</label>
+                <input type="text" class="form-control" id="projectName" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="projectType" class="form-label">Project Type</label>
+                <select class="form-select" id="projectType" multiple>
+                    <option value="Website Development">Website Development</option>
+                    <option value="App Development">App Development</option>
+                    <option value="SEO Services">SEO Services</option>
+                    <option value="Graphic Designing">Graphic Designing</option>
+                    <option value="Cyber Security Audit">Cyber Security Audit</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="projectPurpose" class="form-label">Project Purpose</label>
+                <textarea class="form-control" id="projectPurpose" rows="3"></textarea>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="techStack" class="form-label">Preferred Tech Stack (Optional)</label>
+                    <input type="text" class="form-control" id="techStack">
+                </div>
+                <div class="col-md-6">
+                    <label for="referenceLinks" class="form-label">Reference Links (Optional)</label>
+                    <input type="text" class="form-control" id="referenceLinks">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="budget" class="form-label">Estimated Budget</label>
+                    <select class="form-select" id="budget">
+                        <option value="₹5,000 - ₹10,000">₹5,000 - ₹10,000</option>
+                        <option value="₹10,000 - ₹50,000">₹10,000 - ₹50,000</option>
+                        <option value="₹50,000+">₹50,000+</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="deadline" class="form-label">Project Deadline</label>
+                    <input type="date" class="form-control" id="deadline">
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Additional Services</label>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="logoBranding">
+                            <label class="form-check-label" for="logoBranding">Logo & Branding</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="contentWriting">
+                            <label class="form-check-label" for="contentWriting">Content Writing</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="seoOptimization">
+                            <label class="form-check-label" for="seoOptimization">SEO Optimization</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="socialMedia">
+                            <label class="form-check-label" for="socialMedia">Social Media Integration</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="hosting">
+                            <label class="form-check-label" for="hosting">Hosting & Maintenance</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-submit">Submit</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>document.getElementById('project-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+    
+        const token = localStorage.getItem('token');
+        if (!token) {
+            alert('You are not logged in!');
+            window.location.href = 'userLogin.html';
+            return;
+        }
+    
+        const phoneNumber = document.getElementById('phoneNumber').value;
+        const companyName = document.getElementById('companyName').value;
+        const projectName = document.getElementById('projectName').value;
+        const projectType = Array.from(document.getElementById('projectType').selectedOptions).map(opt => opt.value);
+        const projectPurpose = document.getElementById('projectPurpose').value;
+        const techStack = document.getElementById('techStack').value;
+        const referenceLinks = document.getElementById('referenceLinks').value;
+        const budget = document.getElementById('budget').value;
+        const deadline = document.getElementById('deadline').value;
+        
+        const additionalServices = [];
+        document.querySelectorAll('input[type="checkbox"]:checked').forEach((checkbox) => {
+            additionalServices.push(checkbox.value);
+        });
+    
+        try {
+            const response = await fetch('https://bharatagrawal.shop:3000/api/submitProject', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': token
+                },
+                body: JSON.stringify({
+                    phoneNumber, companyName, projectName, projectType, projectPurpose,
+                    techStack, referenceLinks, budget, deadline, additionalServices
+                })
+            });
+    
+            const data = await response.json();
+    
+            if (response.ok) {
+                alert('Project details submitted successfully');
+                window.location.href = 'userDashboard.html'; 
+            } else {
+                alert(data.message || 'Failed to submit details.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred while submitting project details.');
+        }
+    });
+    
+      </script>
+      
+</body>
+</html>

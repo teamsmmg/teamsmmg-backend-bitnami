@@ -1,0 +1,18 @@
+🔘 Problem Categories
+(Chat section me sabse pehle kuch buttons rahenge jisme alag-alag problems likhi hongi, jaise: "Maintenance", "Billing Issue", "Technical Support", etc.)
+
+📌 User Selection
+
+Jaise hi user kisi ek button pe click karega, usse us problem se judi aur specific issues dikhai jayengi.
+For example, agar user "Maintenance" choose karega, to uske aage related maintenance problems ka list dikhega.
+🤖 AI Assistance & Messaging Option
+
+Agar problem chhoti hai, to AI uska solution turant de dega.
+Agar user ko aur help chahiye, to ek "Leave a Message" ka option rahega jisme user apni problem likh sakta hai.
+📩 Submission & Confirmation
+
+Jaise hi user message submit karega, ek confirmation message dikhai dega:
+"Thank you for contacting us. Our team will get back to you in 1 hour or less."
+🚀 Smooth User Experience
+
+Yeh pura process fast aur interactive hoga, taaki user ko jaldi solution mile aur wo easily apni problem report kar sake.

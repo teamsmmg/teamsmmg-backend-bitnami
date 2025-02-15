@@ -1,0 +1,35 @@
+make a full admin page sath me login ho admin login kar sake or login variable env file se lo from which i can send data upload images const userSchema = new mongoose.Schema({
+  name: String,
+  email: { type: String, unique: true },
+  password: String,
+  profilePhoto: String,
+  roleInTeam: String,
+  skills: [String],
+  description: String,
+  projects: [
+    {
+      image: String,
+      heading: String,
+      description: String,
+      link: String,
+    }
+  ],
+  attendance: [String],
+  leaveRequests: [
+    {
+      date: String,
+      reason: String,
+    }
+  ],
+  projectGuidelines: [
+    {
+      projectName: String,
+      yourWork: String,
+      deadline: String,
+      requiredLinks: [String],
+    }
+  ],
+  createdAt: { type: Date, default: Date.now },
+}); server.js , controller banao adminController , route ke liye AdminRoute  naam se, mdoel UserModel rahega  env se mongodb atlas , cloudinary  ko connect karo middle ware bano multer use karo or cloudinary use karo image save karne ke liye or frontend me html css js ka use karo
+or port use karo 3000 host karne ke liye 
+

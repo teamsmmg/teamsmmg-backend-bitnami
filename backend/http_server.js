@@ -3,22 +3,42 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const dashboardRoute = require('./routes/dashboardRoute');
 const authRoute = require('./routes/authRoute');
+const userAuthRoute = require('./routes/userAuthRoute');
+const formRoutes = require("./routes/formRoute");
+const clientRoutes = require("./routes/clientRoute");
+const teamRoutes = require('./routes/teamsRoute');
+const serviceRoutes = require("./routes/serviceRoute");
+const blogRoutes = require('./routes/blogRoutes');
+const adminBlogRoutes = require('./routes/adminBlogRoutes');
+const portfolioRoute = require('./routes/portfolioRoute');
+const userRoutes = require('./routes/userDashboardRoute');
 const cors = require('cors');
-const bodyParser = require('body-parser');
+
 dotenv.config();
 const app = express();
-// DATABASE IS ADDED FROM THE CONFIG FOLDER 
+
+// DATABASE CONNECTION
 connectDB();
 
+// CORS Setup
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
-// ADD YOUR ROUTE HERE (DONT;T FORGET TO IMPORT IT )
-app.use('/api', authRoute); // Auth routes for signup and login
-app.use('/api', dashboardRoute); // Dashboard routes
-
-// remember the port is 3000
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+// HTTP Server Setup
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Server is running fine on http://localhost:${port}`);
 });
+
+// Routes
+app.use('/api', authRoute);
+app.use('/api', dashboardRoute);
+app.use('/api', userAuthRoute);
+app.use("/api", clientRoutes);
+app.use("/api/form", formRoutes);
+app.use('/api/teams', teamRoutes);
+app.use("/api", serviceRoutes);
+app.use('/api/blogs', blogRoutes);
+app.use('/api/admin/blogs', adminBlogRoutes);
+app.use('/api/portfolio', portfolioRoute);
+app.use('/api/user', userRoutes);

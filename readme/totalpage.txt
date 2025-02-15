@@ -1,0 +1,28 @@
+team admin and frontend 
+portfolio admin and frontend
+contact static page 
+services admin and frontend
+blog frontpage and admin
+rules static page 
+dashboard frontend  // admin not made
+signup and login frontend 
+client backend and frontend completed
+pricing calculator 
+template section // remain 
+main page card section project section remain 
+agrement and confirmility page 
+razorpay upi integration //not integrated yet
+form submitssion page // after login 
+simple form page to enter the details 
+main page good dynamic slide show 
+chat option with us 
+check box integration google for verification in login signup \
+template page for showing the client required template
+our advertisement page for advertisment 
+chat section 
+me sabse pehle kuch ek ese button type ke rahenge jisme problem likhi hongi jese 
+hi user isko click karega to phir vo problem ke aage or puche us particular problem se 
+related for example usene button choose kiya maintaince to phir vo maintaince se judi hui problem me 
+jayega phir uske baad usme ek option rahega if the problem is small our ai will solve it 
+or you can left a message phir uske baad submit ho jayega or likh ke aa jayega thankyou for contacting 
+our team will contect you in 1 hour or less
