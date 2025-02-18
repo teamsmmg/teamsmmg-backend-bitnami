@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Deadlines</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        .deadline-list {
+            list-style: none;
+            padding: 0;
+        }
+        .deadline-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .popup button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Project Deadlines</h1>
+    <ul id="deadline-container" class="deadline-list"></ul>
+    
+    <div id="popup" class="popup">
+        <h2 id="popup-title"></h2>
+        <p id="popup-description"></p>
+        <p><strong>Deadline:</strong> <span id="popup-deadline"></span></p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            const token = localStorage.getItem("token");
+            if (!token) {
+                alert("Unauthorized! Please log in.");
+                return;
+            }
+
+            try {
+                const response = await fetch("http://localhost:3000/api/projects/get", {
+                    method: "GET",
+                    headers: {
+                        "Authorization": token,
+                        "Content-Type": "application/json"
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error("Failed to fetch projects");
+                }
+
+                const projects = await response.json();
+                const container = document.getElementById("deadline-container");
+                let allProjects = [...projects.uncompletedProjects[0], ...projects.completedProjects[0]];
+                
+                allProjects.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+                
+                allProjects.forEach(project => {
+                    const listItem = document.createElement("li");
+                    listItem.classList.add("deadline-item");
+                    listItem.innerHTML = `<strong>${project.projectName}</strong> - ${new Date(project.deadline).toLocaleDateString()}`;
+                    listItem.onclick = () => openPopup(project);
+                    container.appendChild(listItem);
+                });
+            } catch (error) {
+                console.error("Error fetching projects:", error);
+            }
+        });
+
+        function openPopup(project) {
+            document.getElementById("popup-title").innerText = project.projectName;
+            document.getElementById("popup-description").innerText = project.projectDescription;
+            document.getElementById("popup-deadline").innerText = new Date(project.deadline).toLocaleDateString();
+            document.getElementById("popup").style.display = "block";
+        }
+
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+    </script>
+</body>
+</html>

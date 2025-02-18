@@ -6,216 +6,7 @@
         <title>MMG | Freelancing</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
-        <Style>
-            body {
-                font-family: 'Poppins', sans-serif;
-                background-color: #000;
-                color: #fff;
-                margin: 0;
-                padding: 0;
-            }
-            
-            .services {
-                padding: 100px 20px;
-            }
-            
-            .section-title {
-                text-align: center;
-                margin-bottom: 40px;
-            }
-            
-            .section-title h2 {
-                font-size: 32px;
-                color: #fff;
-                margin-bottom: 10px;
-            }
-            
-            .section-title p {
-                font-size: 18px;
-                color: #ccc;
-            }
-            
-            .service-cards {
-                display: flex;
-                gap: 20px;
-                overflow-x: auto;
-                padding: 10px 0;
-                margin-bottom: 40px;
-            }
-            
-            .service-cards::-webkit-scrollbar {
-                height: 10px;
-            }
-            
-            .service-cards::-webkit-scrollbar-thumb {
-                background: #555;
-                border-radius: 10px;
-            }
-            
-            .service-cards::-webkit-scrollbar-track {
-                background: #222;
-            }
-            
-            .card {
-                flex: 0 0 calc(33.333% - 20px);
-                background: #111;
-                border-radius: 8px;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-                padding: 20px;
-                text-align: center;
-                transition: transform 0.3s, box-shadow 0.3s;
-                margin-right: 20px;
-            }
-            
-            .card img {
-                max-width: 60%;
-                height: auto;
-                margin: 0 auto 15px;
-                display: block;
-                border-radius: 6px;
-            }
-            
-            .card:hover {
-                transform: translateY(-10px);
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
-            }
-            
-            .card h4 {
-                font-size: 20px;
-                color: #fff;
-                margin-bottom: 10px;
-            }
-            
-            .card p {
-                font-size: 16px;
-                color: #ccc;
-                margin-bottom: 15px;
-            }
-            
-            .card button {
-                padding: 10px 10px;
-                border: none;
-                width: 50%;
-                height: auto;
-                border-radius: 23px;
-                background: black;
-                color: #fff;
-                font-size: 16px;
-                cursor: pointer;
-                margin: 0 auto;
-                display: block;
-                transition: background 0.3s;
-            }
-            
-            .card button:hover {
-                border: 2px solid #66FCE1;
-            }
-            
-            /* Popup Styling */
-            .popup {
-                display: none;
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 60%;
-                background: #111;
-                padding: 20px;
-                border-radius: 8px;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-                z-index: 1000;
-            }
-            
-            .popup img {
-                width: 100%;
-                border-radius: 6px;
-            }
-            
-            .popup h2 {
-                color: #fff;
-                margin-top: 10px;
-            }
-            
-            .popup p {
-                color: #ccc;
-            }
-            
-            .popup .popup-content {
-                text-align: left;
-            }
-            
-            .popup .close-btn {
-                background: red;
-                color: white;
-                padding: 8px;
-                border: none;
-                cursor: pointer;
-                float: right;
-                border-radius: 5px;
-                transition: background 0.3s;
-            }
-            
-            .popup .close-btn:hover {
-                background: darkred;
-            }
-            
-            .popup .pricing-section {
-                margin-top: 20px;
-            }
-            
-            .popup .pricing-section h4 {
-                text-decoration: underline;
-            }
-            
-            .popup .pricing-item {
-                margin-bottom: 10px;
-            }
-            
-            .popup .pricing-item ul {
-                list-style: none;
-                padding: 0;
-            }
-            
-            .popup .pricing-item ul li {
-                background: #f4f4f4;
-                color: #000;
-                padding: 5px;
-                margin: 5px 0;
-                border-radius: 4px;
-            }
-            
-            /* Scroll animations */
-            [data-aos] {
-                opacity: 0;
-                transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-            }
-            
-            [data-aos="zoom-in"] {
-                transform: scale(0.95);
-            }
-            
-            [data-aos].aos-animate {
-                opacity: 1;
-                transform: scale(1);
-            }
-            
-            /* Responsive Design */
-            @media (max-width: 768px) {
-                .card {
-                    flex: 0 0 100%;
-                    margin-right: 0;
-                }
-            
-                .card img {
-                    max-width: 80%;
-                }
-            
-                .popup {
-                    width: 90%;
-                }
-            }
-            
-        </Style>
+     
       
         <!-- Favicons -->
         <link href="assets/img/favicon.ico" rel="icon">
@@ -334,83 +125,53 @@
       <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
       <script>
         AOS.init();
-        
-      </script>
-      <script>
-       // Initialize AOS animations
-AOS.init();
-
-document.addEventListener("DOMContentLoaded", fetchServices);
-
-async function fetchServices() {
-    try {
-        const response = await fetch("https://bharatagrawal.shop:3000/api/services");
-        const data = await response.json();
-        console.log("✅ API Response:", data);
-
-        if (!Array.isArray(data) || data.length === 0) {
-            document.getElementById("services-container").innerHTML = "<p>No services available.</p>";
-            return;
+    
+        document.addEventListener("DOMContentLoaded", fetchServices);
+    
+        async function fetchServices() {
+            try {
+                const response = await fetch("http://localhost:3000/api/services");
+                const data = await response.json();
+                console.log("✅ API Response:", data);
+    
+                if (!Array.isArray(data) || data.length === 0) {
+                    document.getElementById("services-container").innerHTML = "<p>No services available.</p>";
+                    return;
+                }
+    
+                const servicesContainer = document.getElementById("services-container");
+                servicesContainer.innerHTML = "";
+    
+                data.forEach(service => {
+                    const serviceCard = document.createElement("div");
+                    serviceCard.classList.add("service-card", "card");
+    
+                    serviceCard.innerHTML = `
+                        <img src="${service.image}" alt="${service.title}">
+                        <h4 class="service-title">${service.title}</h4>
+                        <p class="service-description">${service.description.substring(0, 100)}...</p>
+                        
+                        <button class="read-more-btn" data-id="${service.id}">Read More</button>
+                    `;
+    
+                    servicesContainer.appendChild(serviceCard);
+                });
+    
+                // "Read More" बटन के लिए इवेंट लिसनर ऐड करें
+                document.querySelectorAll(".read-more-btn").forEach(button => {
+                    button.addEventListener("click", (event) => {
+                        const serviceId = event.target.getAttribute("data-id");
+                        localStorage.setItem("selectedServiceId", serviceId);
+                        window.location.href = "individualservices.html";
+                    });
+                });
+    
+            } catch (error) {
+                console.error("❌ Error fetching services:", error);
+            }
         }
-
-        const servicesContainer = document.getElementById("services-container");
-        servicesContainer.innerHTML = "";
-
-        data.forEach(service => {
-            const serviceCard = document.createElement("div");
-            serviceCard.classList.add("service-card");
-
-            serviceCard.innerHTML = `
-                <img src="${service.image}" alt="${service.title}">
-                <h4>${service.title}</h4>
-                <p>${service.description}</p>
-                <button class="read-more-btn" onclick='openPopup(${JSON.stringify(service)})'>Read More</button>
-            `;
-
-            servicesContainer.appendChild(serviceCard);
-        });
-
-    } catch (error) {
-        console.error("❌ Error fetching services:", error);
-    }
-}
-
-function openPopup(service) {
-    document.getElementById("popup-img").src = service.image;
-    document.getElementById("popup-title").textContent = service.title;
-    document.getElementById("popup-long-desc").textContent = service.longDescription;
-
-    const pricingContainer = document.getElementById("popup-pricing");
-    pricingContainer.innerHTML = ""; // Clear previous content
-
-    // Creating pricing sections dynamically
-    if (service.pricing && typeof service.pricing === "object") {
-        Object.keys(service.pricing).forEach(planType => {
-            const planDiv = document.createElement("div");
-            planDiv.classList.add("pricing-item");
-            planDiv.innerHTML = `<h4>${planType} Plan:</h4>`;
-
-            const planList = document.createElement("ul");
-            service.pricing[planType].forEach(point => {
-                const listItem = document.createElement("li");
-                listItem.textContent = point;
-                planList.appendChild(listItem);
-            });
-
-            planDiv.appendChild(planList);
-            pricingContainer.appendChild(planDiv);
-        });
-    } else {
-        pricingContainer.innerHTML = "<p>No pricing information available.</p>";
-    }
-
-    document.getElementById("popup").style.display = "block";
-}
-
-function closePopup() {
-    document.getElementById("popup").style.display = "none";
-}
-
     </script>
+    
+    
 </body>
 </html>
