@@ -73,138 +73,115 @@ body {
   }
 }
 
-/* dashboard section */
 .section-title {
-  color: #00ffff;
+  color: #0ff;
   text-align: center;
   margin-bottom: 2rem;
-  font-size: 2.5rem;
-  text-transform: uppercase;
-  letter-spacing: 3px;
 }
+
 .card-custom {
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid #00ffff;
-  border-radius: 15px;
+  background-color: #111;
+  border: 1px solid #0ff;
+  border-radius: 10px;
   padding: 1.5rem;
-  transition: all 0.3s ease;
   height: 100%;
+  transition: transform 0.3s ease-in-out;
 }
+
 .card-custom:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0, 255, 255, 0.2);
+  transform: translateY(-5px);
 }
+
 .card-title {
-  color: #00ffff;
+  color: #0ff;
   font-size: 1.2rem;
   margin-bottom: 1rem;
 }
+
 .card-value {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
+
+.card-custom a {
+  color: #0ff;
+  text-decoration: none;
+}
+
+.card-custom a:hover {
+  text-decoration: underline;
+}
+
 .progress-custom {
   height: 10px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: #222;
   border-radius: 5px;
   overflow: hidden;
 }
+
 .progress-bar-custom {
-  background-color: #00ffff;
-  transition: width 1s ease-in-out;
-}
-
-/* team member profile section  */
-
-.text-muted {
-  color: #ccc !important;
-}
-.skills {
-  margin: 1rem 0;
-}
-.skill-tag {
   background-color: #0ff;
-  color: #000;
-  padding: 0.3rem 0.7rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  margin-right: 0.5rem;
-  display: inline-block;
+}
+
+#team .card-custom {
+  text-align: center;
+}
+
+#team .card-img-top {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 1rem auto;
+  border: 3px solid #0ff;
+}
+
+#team .card-title {
   margin-bottom: 0.5rem;
 }
-.social-icons a {
-  color: #fff;
-  font-size: 1.2rem;
-  margin-right: 1rem;
-  transition: color 0.3s ease;
+
+#team .text-muted {
+  color: #aaa !important;
 }
-.social-icons a:hover {
-  color: #0ff;
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
 }
+
+.skills span {
+  background-color: #0ff;
+  color: #000;
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
 .member-description {
-  margin-top: 1rem;
-  font-style: italic;
-  color: #ddd;
-}
-/* task manager section  */
-
-/* Add this to your existing styles.css file */
-
-#taskInput {
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 2px solid #00ffff;
-  color: #ffffff;
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  border-radius: 4px;
-  transition: all 0.3s ease;
+  margin: 1rem 0;
 }
 
-#taskInput::placeholder {
-  color: rgba(255, 255, 255, 0.5);
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
-#taskInput:focus {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-color: #00cccc;
-  box-shadow: 0 0 0 0.2rem rgba(0, 255, 255, 0.25);
-  outline: none;
+.social-icons a {
+  color: #0ff;
+  font-size: 1.5rem;
+  transition: color 0.3s ease-in-out;
 }
 
-#taskInput:hover {
-  background-color: rgba(255, 255, 255, 0.15);
-}
-.btn-cyan {
-  background-color: #00ffff;
-  color: #121212;
-  border: none;
-  transition: all 0.3s ease;
+.social-icons a:hover {
+  color: #fff;
 }
 
-.btn-cyan:hover {
-  background-color: #00cccc;
-  color: #ffffff;
-}
 
-.task-item {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-left: 4px solid #00ffff;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-}
-
-.task-item:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  transform: translateX(5px);
-}
-
-.task-item .btn-sm {
-  padding: 0.2rem 0.5rem;
-  font-size: 0.875rem;
-}
 
 .project-card {
   background-color: rgba(255, 255, 255, 0.1);
@@ -301,3 +278,30 @@ body {
   margin-bottom: 20px;
   color: #0ff;
 }  
+
+
+/* attendence section  */
+#attendance .section-title {
+  color: cyan;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+#attendance .card-custom {
+  background-color: black;
+  border: 2px solid cyan;
+}
+#attendance .card-title {
+  color: cyan;
+}
+#attendance .card-text {
+  color: white;
+}
+#attendance .icon-large {
+  font-size: 3rem;
+  color: cyan;
+}
+#attendance-list, #leave-requests-list {
+  list-style-type: none;
+  padding-left: 0;
+  color: white;
+}

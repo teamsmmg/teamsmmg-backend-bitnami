@@ -1,0 +1,113 @@
+#carouselExampleIndicators {
+  margin-top: 0;
+}
+
+#carouselExampleIndicators .carousel-inner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../img/slideshow_gif.gif');
+  background-size: cover;
+  background-position: center;
+  filter: hue-rotate(-100deg) blur(2px);
+  opacity: 1;
+  z-index: -1;
+}
+
+#carouselExampleIndicators .carousel-item {
+  height: 100vh;
+  min-height: 400px;
+  background: transparent;
+  position: relative;
+}
+
+#carouselExampleIndicators .carousel-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#carouselExampleIndicators .carousel-caption {
+  bottom: 30%;
+  z-index: 10;
+  text-align: center;
+  padding: 0 15px;
+}
+
+#carouselExampleIndicators .carousel-caption h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+  animation: fadeIn 2s ease-in-out;
+}
+
+#carouselExampleIndicators .carousel-caption p {
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+#carouselExampleIndicators .custom-btn {
+  border: 2px solid white;
+  background: none;
+  color: white;
+  border-radius: 50px;
+  padding: 10px 25px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.custom-btn:hover {
+  background-color: white;
+  color: black;
+}
+
+@media (max-width: 800px) {
+  .carousel-item {
+    height: 50vh;
+  }
+  .carousel-caption {
+    bottom: 10%;
+    padding: 0 10px;
+  }
+  .carousel-caption h1 {
+    font-size: 1.4rem; 
+  }
+  .carousel-caption p {
+    font-size: 0.9rem;
+  }
+  .custom-btn {
+    padding: 6px 16px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .carousel-caption h1 {
+    font-size: 1.1rem; /* 📱 Bahut chhoti screen ke liye aur chhoti heading */
+  }
+  .carousel-caption p {
+    font-size: 0.75rem;
+  }
+  .custom-btn {
+    padding: 5px 14px;
+    font-size: 0.7rem;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.carousel-indicators [data-bs-target] {
+  background-color: white;
+}

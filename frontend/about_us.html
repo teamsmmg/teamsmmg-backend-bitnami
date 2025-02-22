@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeamsMMG - Web Development Agency</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link id="theme-stylesheet" href="assets/css/main.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .header2 {
+            background: linear-gradient(135deg, #61FCF1 0%, black 100%);
+            
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .card{
+            color: white;
+            background:none;
+        }
+        p {
+            font-size: 1.5rem;
+            color: #f0f0f0;
+        }
+        .btn{
+            background: none;
+            border: 2px solid #66FCF1;
+        }
+        .btn-custom {
+            color: white;
+           background: none;
+            border: 2px solid #66FCF1;
+            border-radius: 53px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        .btn-custom:hover {
+            color: white;
+           border:none;
+          
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .who-we-are {
+            background: none;
+            border: 2px solid #66FCF1;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .who-we-are h2 {
+            
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+        .who-we-are h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: none;
+            border: 2px solid #66FCF1;
+            transition: width 0.3s ease-in-out;
+        }
+        .who-we-are:hover h2::after {
+            width: 100%;
+        }
+        .who-we-are p {
+            
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .image-container img {
+            transition: transform 0.3s ease-in-out;
+        }
+        .image-container:hover img {
+            transform: scale(1.05);
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: none;
+            border: 2px solid #66FCF1;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .image-container:hover .overlay {
+            opacity: 1;
+        }
+
+      
+        .our-story {
+            background: none;
+            border: 2px solid #66FCF1;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        .our-story::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 100px;
+            height: 100px;
+            background: none;
+            border: 2px solid #66FCF1;
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .our-story::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            width: 80px;
+            height: 80px;
+            background: none;
+            border: 2px solid #66FCF1;
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .our-story h2 {
+           
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            z-index: 1;
+        }
+        .our-story h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background-color: #61FCF1;
+            transition: width 0.3s ease-in-out;
+        }
+        .our-story:hover h2::after {
+            width: 100%;
+        }
+        .our-story p {
+           
+            font-size: 1.1rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin-top: 30px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: none;
+            border: 2px solid #66FCF1;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: none;
+            border: 2px solid #66FCF1;
+        }
+        .founder-image {
+            border-radius: 50%;
+            background: none;
+            border: 2px solid #66FCF1;
+            transition: transform 0.3s ease-in-out;
+        }
+        .founder-image:hover {
+            transform: scale(1.05);
+        }
+
+        
+        .experts-section {
+            background: black;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            
+            text-align: center;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .card-custom {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .card-custom:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        .card-body {
+            border-radius: 15px;
+            border: 2px solid #66FCF1;
+            text-align: center;
+            padding: 1.5rem;
+            background-color: black;
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            
+            margin-bottom: 0.5rem;
+        }
+        .card-text {
+            
+            font-size: 1rem;
+        }
+        .social-icons {
+            margin-top: 1rem;
+        }
+        .social-icons a {
+           
+            font-size: 1.2rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: #61FCF1;
+        }
+
+        .mission-vision-section {
+            background: none;
+            border: 2px solid #66FCF1;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .mission-vision-content {
+            position: relative;
+            z-index: 2;
+        }
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+        .section-description {
+            font-size: 1.25rem;
+            color: #ffffff;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+        .icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 2rem;
+        }
+        .icon {
+            font-size: 3rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+        .icon-text {
+            font-size: 1rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+        }
+        .shape-1 {
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: #ffffff;
+        }
+        .shape-2 {
+            bottom: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background-color: #ffffff;
+        }
+        
+       
+        .growth-section {
+            background: linear-gradient(135deg, #61FCF1 0%, black 100%);
+            padding: 80px 0;
+            color: #ffffff;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #61FCF1;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: #61FCF1;
+            border: 4px solid #61FCF1;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+           
+            border: 2px solid #66FCF1;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #ffffff;
+        }
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: 2px solid #66FCF1;
+            border-width: 10px 10px 10px 0;
+           
+        }
+        .right::after {
+            left: -16px;
+        }
+        .content {
+            padding: 20px 30px;
+            background-color: #0b0b0b;
+            position: relative;
+            border-radius: 6px;
+           
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .date {
+            font-weight: bold;
+            color: #FF9F55;
+        }
+        .achievement-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #61FCF1;
+        }
+
+        
+        
+      
+        
+        .why-choose-us h2 {
+            
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        
+        .why-choose-us .card {
+            transition: transform 0.3s ease-in-out;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .why-choose-us .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .why-choose-us .card-title {
+            color: #61FCF1;
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+        
+        .get-in-touch {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .get-in-touch h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        
+        .get-in-touch .contact-info a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .get-in-touch .contact-info a:hover {
+            color: #ffd700;
+        }
+        
+        .get-in-touch .btn-primary {
+            background-color: #ffd700;
+            border-color: #ffd700;
+           
+            font-weight: bold;
+            padding: 10px 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .get-in-touch .btn-primary:hover {
+            background-color: #fff;
+            color: #61FCF1;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header id="header" class="header d-flex align-items-center fixed-top">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      
+          <a href="index.html" class="logo d-flex align-items-center">
+            <img src="assets/favicon_logo/android-chrome-512x512.png" alt="">
+          </a>
+      
+          <nav id="navmenu" class="navmenu">
+            <ul>
+              <li><a href="/" class="active">Home</a></li>
+              <li><a href="/services.html">Services</a></li>
+              <li><a href="/client.html">Clients</a></li>
+              <li><a href="/portfolio.html">Portfolio</a></li>
+              <li><a href="/team.html">Team</a></li>
+              <li><a href="/blog.html">Blog</a></li>
+              <li class="dropdown">
+                <a href="#"><span>Services</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="#">Web Development</a></li>
+                  <li class="Clients">
+                    <a href="#"><span>Design Services</span></a>
+                    <ul>
+                      <li><a href="#">UI/UX Design</a></li>
+                      <li><a href="#">Logo Design</a></li>
+                      <li><a href="#">Graphic Design</a></li>
+                      <li><a href="#">Banner Design</a></li>
+                      <li><a href="#">Custom Templates</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">E-commerce Development</a></li>
+                  <li><a href="#">SEO & Digital Marketing</a></li>
+                  <li><a href="#">Website Maintenance</a></li>
+                </ul>
+              </li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+          </nav>
+      
+          <div class="d-flex align-items-center">
+            <a href="/userSignup.html" class="btn toggle-button px-4 py-2">Sign In</a>
+            <a href="/signup.html" class="btn toggle-button px-4 py-2">Developer</a>
+          </div>
+      
+        </div>
+      
+        
+      </header>
+      
+
+    <div class="container">
+        <header class="header2  text-center p-5 mb-5" data-aos="zoom-in">
+            <h1 data-aos="fade-down" data-aos-delay="200">Welcome to TeamsMMG</h1>
+            <p class="mt-3" data-aos="fade-up" data-aos-delay="400">Your AI-Powered Web Development Partner</p>
+            <button class="btn btn-custom btn-lg mt-4" data-aos="flip-up" data-aos-delay="600">Get Started</button>
+        </header>
+        
+        <section class="features text-center">
+            <div class="row">
+                <div class="col-md-4 mb-4" data-aos="fade-right" data-aos-delay="200">
+                    <div class="card ">
+                        <div class="card-body">
+                            <h3 class="card-title">AI-Powered</h3>
+                            <p class="card-text"> power of AI in your web development projects.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card ">
+                        <div class="card-body">
+                            <h3 class="card-title">Responsive Design</h3>
+                            <p class="card-text">Create websites that look great on all devices.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-left" data-aos-delay="600">
+                    <div class="card ">
+                        <div class="card-body">
+                            <h3 class="card-title">24/7 Support</h3>
+                            <p class="card-text">Our team is always here to assist you.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+<main class="container">
+    <div class="container py-5">
+        <section class="who-we-are p-5" data-aos="fade-up" data-aos-duration="1000">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="mb-4" data-aos="fade-right" data-aos-delay="200">Who We Are</h2>
+                    <p data-aos="fade-up" data-aos-delay="400">
+                        TeamsMMG is a cutting-edge web development agency focused on delivering AI-integrated, 
+                        cost-effective websites. We blend creativity with technology to create digital 
+                        experiences that stand out in the crowded online space.
+                    </p>
+                    <ul class="list-unstyled mt-4" data-aos="fade-up" data-aos-delay="600">
+                        <li class="mb-2">✅ AI-Powered Solutions</li>
+                        <li class="mb-2">✅ Cost-Effective Development</li>
+                        <li>✅ Innovative Design Approach</li>
+                    </ul>
+                    <button class="btn btn-primary mt-4" data-aos="zoom-in" data-aos-delay="800">Learn More</button>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-delay="400">
+                    <div class="image-container">
+                        <img src="https://random.imagecdn.app/500/300" class="img-fluid rounded" alt="TeamsMMG">
+                        <div class="overlay"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+<div class="container py-5">
+    <section class="our-story p-5" data-aos="fade-up" data-aos-duration="1000">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2 class="mb-4" data-aos="fade-right" data-aos-delay="200">Our Story</h2>
+                <p data-aos="fade-up" data-aos-delay="400">
+                    Started from hackathons, Bharat Agrawal launched TeamsMMG with a vision to make AI-driven web development affordable and accessible to businesses of all sizes.
+                </p>
+                <div class="timeline" data-aos="fade-up" data-aos-delay="600">
+                    <div class="timeline-item">
+                        <h5>2023: The Spark</h5>
+                        <p>Bharat's journey began at hackathons, where he discovered the power of AI in web development.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h5>2024: The Launch</h5>
+                        <p>TeamsMMG was born, with a mission to revolutionize web development through AI integration.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h5>2025: Growing Impact</h5>
+                        <p>Today, we're helping businesses across the globe harness the power of AI-driven websites.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center" data-aos="fade-left" data-aos-delay="800">
+                <img src="https://random.imagecdn.app/200/200" alt="Bharat Agrawal" class="founder-image img-fluid mb-3">
+                <h4>Bharat Agrawal</h4>
+                <p class="text-muted">Founder & CEO</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<section class="experts-section py-5">
+    <div class="container">
+        <h2 class="section-title mb-5" data-aos="fade-down">Meet the Experts</h2>
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="flip-left" data-aos-duration="1000">
+                <div class="card card-custom">
+                    <img src="https://random.imagecdn.app/500/150" class="card-img-top" alt="Bharat Agrawal">
+                    <div class="card-body">
+                        <h5 class="card-title">Bharat Agrawal</h5>
+                        <p class="card-text">Founder & Team Lead</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="200">
+                <div class="card card-custom">
+                    <img src="https://random.imagecdn.app/500/150" class="card-img-top" alt="Shivam Kumar">
+                    <div class="card-body">
+                        <h5 class="card-title">Shivam Kumar</h5>
+                        <p class="card-text">Cybersecurity Expert</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="200">
+                <div class="card card-custom">
+                    <img src="https://random.imagecdn.app/500/150" class="card-img-top" alt="Shivam Kumar">
+                    <div class="card-body">
+                        <h5 class="card-title">Priyanshu Sharma</h5>
+                        <p class="card-text">Backend Expert</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="200">
+                <div class="card card-custom">
+                    <img src="https://random.imagecdn.app/500/150" class="card-img-top" alt="Shivam Kumar">
+                    <div class="card-body">
+                        <h5 class="card-title">Parmeshvar</h5>
+                        <p class="card-text">API Engineer & DevOps Specialist </p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="400">
+                <div class="card card-custom">
+                    <img src="https://random.imagecdn.app/500/150" class="card-img-top" alt="Charitra Patidar">
+                    <div class="card-body">
+                        <h5 class="card-title">Charitra Patidar</h5>
+                        <p class="card-text">Frontend Developer & Designer </p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mission-vision-section">
+    <div class="container mission-vision-content">
+        <h2 class="section-title" data-aos="fade-up">Our Mission & Vision</h2>
+        <p class="section-description" data-aos="fade-up" data-aos-delay="200">
+            AI-driven, secure, and affordable websites for all businesses. We strive to empower entrepreneurs and companies with cutting-edge technology, ensuring their online presence is both powerful and accessible.
+        </p>
+        <div class="icon-container">
+            <div class="icon-item" data-aos="zoom-in" data-aos-delay="400">
+                <i class="fas fa-robot icon"></i>
+                <span class="icon-text">AI-Powered</span>
+            </div>
+            <div class="icon-item" data-aos="zoom-in" data-aos-delay="600">
+                <i class="fas fa-shield-alt icon"></i>
+                <span class="icon-text">Secure</span>
+            </div>
+            <div class="icon-item" data-aos="zoom-in" data-aos-delay="800">
+                <i class="fas fa-hand-holding-usd icon"></i>
+                <span class="icon-text">Affordable</span>
+            </div>
+        </div>
+    </div>
+    <div class="shape shape-1" data-aos="fade-right" data-aos-duration="1500"></div>
+    <div class="shape shape-2" data-aos="fade-left" data-aos-duration="1500"></div>
+    
+</section>
+
+<section class="growth-section">
+    <div class="container">
+        <h2 class="section-title text-center" data-aos="fade-down">Our Growth & Achievements</h2>
+        <div class="timeline">
+            <div class="timeline-item left" data-aos="fade-right">
+                <div class="content">
+                    <i class="fas fa-rocket achievement-icon"></i>
+                    <h3 class="date">November 2023</h3>
+                    <p>Founded with a vision to revolutionize web development</p>
+                </div>
+            </div>
+            <div class="timeline-item right" data-aos="fade-left">
+                <div class="content">
+                    <i class="fas fa-trophy achievement-icon"></i>
+                    <h3 class="date">December 2023 - February 2024</h3>
+                    <p>Multiple hackathon wins, showcasing our innovative solutions</p>
+                </div>
+            </div>
+            <div class="timeline-item left" data-aos="fade-right">
+                <div class="content">
+                    <i class="fas fa-handshake achievement-icon"></i>
+                    <h3 class="date">March 2024</h3>
+                    <p>Established industry collaborations, expanding our network and expertise</p>
+                </div>
+            </div>
+            <div class="timeline-item right" data-aos="fade-left">
+                <div class="content">
+                    <i class="fas fa-users achievement-icon"></i>
+                    <h3 class="date">April 2024</h3>
+                    <p>Grew our team, bringing in diverse talents to fuel our growth</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- done -->
+<section class="why-choose-us py-5">
+    <div class="container">
+        <h2 class="text-center mb-5" data-aos="fade-left">Why Choose Us?</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">Affordable AI-Integrated Websites</h3>
+                        <p class="card-text">We offer cutting-edge AI solutions at competitive prices.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">Strong Cybersecurity Measures</h3>
+                        <p class="card-text">Your data's safety is our top priority with robust security protocols.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">Expert Team with Diverse Skills</h3>
+                        <p class="card-text">Our team brings a wide range of expertise to every project.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000,
+        once: true,
+    });
+    AOS.init({
+        once: true,
+        duration: 1000,
+        easing: 'ease-in-out'
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    
+        // Add hover effect to cards
+        const cards = document.querySelectorAll('.why-choose-us .card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.backgroundColor = '#e9ecef';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.backgroundColor = '#fff';
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

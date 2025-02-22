@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Activity Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 50px; }
+        form { display: flex; flex-direction: column; width: 300px; }
+        input, textarea, button { margin-bottom: 10px; padding: 8px; }
+    </style>
+</head>
+<body>
+    <h2>Add New Project</h2>
+    <form id="projectForm" enctype="multipart/form-data">
+        <label>Email: <input type="email" id="email" required></label><br>
+        <label>Project Name: <input type="text" id="projectName" required></label><br>
+        <label>Project Description: <textarea id="projectDescription" required></textarea></label><br>
+        <label>Documentation Link: <input type="url" id="documentationLink"></label><br>
+        <label>Deadline: <input type="date" id="deadline" required></label><br>
+        <label>Notes: <textarea id="notes"></textarea></label><br>
+        
+        <label>Accepted: <input type="checkbox" id="accepted"></label><br>
+        <label>Activated: <input type="checkbox" id="activated"></label><br>
+        <label>Submitted: <input type="checkbox" id="submitted"></label><br>
+        
+        <label>Project Images: <input type="file" id="projectImages" multiple></label><br>
+    
+        <button type="submit">Add Project</button>
+    </form>
+    
+   
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const projectForm = document.getElementById("projectForm"); // Ensure form has this ID
+        
+            if (projectForm) {
+                projectForm.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+        
+                    const formData = new FormData();
+                    formData.append("email", document.getElementById("email").value);
+                    formData.append("projectName", document.getElementById("projectName").value);
+                    formData.append("projectDescription", document.getElementById("projectDescription").value);
+                    formData.append("documentationLink", document.getElementById("documentationLink").value);
+                    formData.append("deadline", document.getElementById("deadline").value);
+                    formData.append("notes", document.getElementById("notes").value);
+                    formData.append("accepted", document.getElementById("accepted").checked);
+                    formData.append("activated", document.getElementById("activated").checked);
+                    formData.append("submitted", document.getElementById("submitted").checked);
+        
+                    // Handle multiple file uploads (project images)
+                    const projectImages = document.getElementById("projectImages").files;
+                    for (let i = 0; i < projectImages.length; i++) {
+                        formData.append("projectImages", projectImages[i]); // Multiple file support
+                    }
+        
+                    console.log("Form Data Sent:", [...formData.entries()]); // Debugging log
+        
+                    try {
+                        const response = await fetch("http://localhost:3000/api/admin/add-project", {
+                            method: "POST",
+                            body: formData, // No headers needed for FormData
+                        });
+        
+                        const data = await response.json();
+                        console.log("Server Response:", data);
+        
+                        if (response.ok) {
+                            alert("Project added successfully!");
+                            projectForm.reset(); // Clear form after submission
+                        } else {
+                            alert("Error adding project: " + data.message);
+                        }
+                    } catch (error) {
+                        console.error("Error adding project:", error);
+                        alert("Something went wrong. Check the console for details.");
+                    }
+                });
+            }
+        });
+        
+    </script>
+</body>
+</html>

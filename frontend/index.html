@@ -9,8 +9,8 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.ico" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="assets/favicon_logo/favicon-32x32.png" rel="icon">
+  <link href="assets/favicon_logo/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -18,6 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
+
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -27,7 +28,7 @@
 
   <!-- Main CSS File -->
   <link id="theme-stylesheet" href="assets/css/main.css" rel="stylesheet">
-
+<link rel="stylesheet" href="assets/css/slideshow.css">
 
 
 </head>
@@ -38,7 +39,7 @@
   <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
     <a href="index.html" class="logo d-flex align-items-center">
-      <img src="assets/Circular_logo.png" alt="">
+      <img src="assets/favicon_logo/android-chrome-512x512.png" alt="">
     </a>
 
     <nav id="navmenu" class="navmenu">
@@ -52,20 +53,18 @@
         <li class="dropdown">
           <a href="#"><span>Services</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
           <ul>
-            <li><a href="#">Web Development</a></li>
-            <li class="Clients">
-              <a href="#"><span>Design Services</span></a>
-              <ul>
-                <li><a href="#">UI/UX Design</a></li>
-                <li><a href="#">Logo Design</a></li>
-                <li><a href="#">Graphic Design</a></li>
-                <li><a href="#">Banner Design</a></li>
-                <li><a href="#">Custom Templates</a></li>
-              </ul>
-            </li>
-            <li><a href="#">E-commerce Development</a></li>
-            <li><a href="#">SEO & Digital Marketing</a></li>
-            <li><a href="#">Website Maintenance</a></li>
+            <li><a href="#" id="web-dev" class="service-item" data-id="67b8b54ee419fbb8fca0238a">Web Development</a></li>
+            
+                <li><a href="#" id="ui-ux" class="service-item" data-id="65d788f1b2e4a1c123450002">UI/UX Design</a></li>
+                <li><a href="#" id="logo-design" class="service-item" data-id="665d788f1b2e4a1c123450002">Logo Design</a></li>
+                <li><a href="#" id="graphic-design" class="service-item" data-id="65d788f1b2e4a1c123450004">Graphic Design</a></li>
+                <li><a href="#" id="banner-design" class="service-item" data-id="65d788f1b2e4a1c123450005">Banner Design</a></li>
+                <li><a href="#" id="custom-templates" class="service-item" data-id="65d788f1b2e4a1c123450006">Custom Templates</a></li>
+              
+           
+            <li><a href="#" id="ecommerce-dev" class="service-item" data-id="65d788f1b2e4a1c123450007">E-commerce Development</a></li>
+            <li><a href="#" id="seo-digital" class="service-item" data-id="65d788f1b2e4a1c123450008">SEO & Digital Marketing</a></li>
+            <li><a href="#" id="website-maintenance" class="service-item" data-id="65d788f1b2e4a1c123450009">Website Maintenance</a></li>
           </ul>
         </li>
         <li><a href="#contact">Contact</a></li>
@@ -79,82 +78,68 @@
     </div>
 
   </div>
+
+  
 </header>
 
+<!-- navbar script   -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const serviceItems = document.querySelectorAll('.service-item');
 
-  <main class="main">
+    serviceItems.forEach(item => {
+      item.addEventListener('click', function (e) {
+        e.preventDefault();
+        const serviceId = this.getAttribute('data-id');
+        localStorage.setItem('selectedServiceId', serviceId); // Store ID in localStorage
+        window.location.href = 'individualservices.html'; // Redirect
+      });
+    });
+  });
+</script>
+  
 
 <!-- Hero Section -->
-<section id="hero" class="hero section dark-background">
+<main class="main">
   <!-- crousel section started  -->
-  <div id="hero-carousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel" style="padding-top: 60px;">
-  
-    <!-- Slide 1 -->
-    <div class="carousel-item active">
-      <div class="carousel-container">
-        <img src="/assets/slideshow/1.png" class="d-block w-100" alt="Slide 1" style="aspect-ratio: 16/9; object-fit: cover;">
-        <h2 class="animate__animated animate__fadeInDown">Welcome to <span>MMG</span></h2>
-        <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Discover More</a>
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="carousel-caption">
+          <h1>🚀 Apna Business Online Lao</h1>
+          <p>Apne business ko global banayein humare professional website development aur SEO services ke saath.</p>
+          <a href="#contact" class="custom-btn">📩 Contact Us</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="carousel-caption">
+          <h1>💼 Professional Websites Banayein</h1>
+          <p>Custom design aur latest technologies ke saath apna online presence banayein.</p>
+          <a href="/services.html" class="custom-btn">🔧 Our Services </a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="carousel-caption">
+          <h1>✨ SEO Optimization se Growth Paayein</h1>
+          <p>SEO optimized content aur fast-loading websites ke saath apne business ko grow karein.</p>
+          <a href="/portfolio.html" class="custom-btn">👨‍💻 Our Work</a>
+        </div>
       </div>
     </div>
-
-    <!-- Slide 2 -->
-    <div class="carousel-item">
-      <div class="carousel-container">
-        <img src="/assets/slideshow/2.png" class="d-block w-100" alt="Slide 2" style="aspect-ratio: 16/9; object-fit: cover;">
-        <h2 class="animate__animated animate__fadeInDown">Empowering Your Digital Journey</h2>
-        <a href="/services.html" class="btn-get-started animate__animated animate__fadeInUp scrollto">Explore Our Services</a>
-      </div>
-    </div>
-
-    <!-- Slide 3 -->
-    <div class="carousel-item">
-      <div class="carousel-container">
-        <img src="/assets/slideshow/3.png" class="d-block w-100" alt="Slide 3" style="aspect-ratio: 16/9; object-fit: cover;">
-        <h2 class="animate__animated animate__fadeInDown">Creative Designs, Tailored for You</h2>
-        <a href="/portfolio.html" class="btn-get-started animate__animated animate__fadeInUp scrollto">See Our Work</a>
-      </div>
-    </div>
-
-    <!-- Slide 4 -->
-    <div class="carousel-item">
-      <div class="carousel-container">
-        <img src="/assets/slideshow/4.png" class="d-block w-100" alt="Slide 4" style="aspect-ratio: 16/9; object-fit: cover;">
-        <h2 class="animate__animated animate__fadeInDown">Secure Your Digital Presence</h2>
-        <a href="/rules.html" class="btn-get-started animate__animated animate__fadeInUp scrollto">Learn More</a>
-      </div>
-    </div>
-
-    <!-- Carousel Controls -->
-    <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
-    </a>
-    <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
-      <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-    </a>
-  
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
-
-
-      <!-- crousel section ended  -->
-
-      <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
-        <defs>
-          <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
-        </defs>
-        <g class="wave1">
-          <use xlink:href="#wave-path" x="50" y="3"></use>
-        </g>
-        <g class="wave2">
-          <use xlink:href="#wave-path" x="50" y="0"></use>
-        </g>
-        <g class="wave3">
-          <use xlink:href="#wave-path" x="50" y="9"></use>
-        </g>
-      </svg>
-
-    </section>
-    <!-- /Hero Section -->
 
     <!-- About Section -->
     <section id="about" class="about section">
@@ -182,7 +167,7 @@
             <p>
               Our vision is simple: "Every person deserves a digital identity." We have revolutionized the way Gujarat thinks about technology by combining expertise in web development, app design, and digital marketing. Join us in creating a digital-first Gujarat, one idea at a time.
             </p>
-            <a href="/aboutus.html" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+            <a href="/about_us.html" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
           </div>
         </div>
       </div>
@@ -273,98 +258,98 @@
     <!-- Services Section -->
     <section id="services" class="services section">
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Our Services</h2>
-        <p>What We Offer</p>
-      </div><!-- End Section Title -->
-    
-      <div class="container">
-    
-        <div class="row gy-4">
-    
-          <!-- Web Development Service -->
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-house-door" style="color: #0dcaf0;"></i>
-              </div>
-              <a href="service-details.html" class="stretched-link">
-                <h3>Website Development</h3>
-              </a>
-              <p>We specialize in building fast, responsive websites that are not only visually appealing but also optimized for performance. With our AI integration, we ensure your website loads in record time.</p>
-            </div>
-          </div><!-- End Service Item -->
-    
-          <!-- Web Design Service -->
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-paint-bucket" style="color: #fd7e14;"></i>
-              </div>
-              <a href="service-details.html" class="stretched-link">
-                <h3>Web Design</h3>
-              </a>
-              <p>Our team creates modern, user-friendly, and stunning designs that cater to your brand's identity and offer seamless navigation for your visitors.</p>
-            </div>
-          </div><!-- End Service Item -->
-    
-          <!-- AI Integration Service -->
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-brain" style="color: #20c997;"></i>
-              </div>
-              <a href="service-details.html" class="stretched-link">
-                <h3>AI Integration</h3>
-              </a>
-              <p>We integrate cutting-edge AI technologies into websites, offering smarter features, better user experience, and faster processing.</p>
-            </div>
-          </div><!-- End Service Item -->
-    
-          <!-- Logo Design Service -->
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-vector-pen" style="color: #df1529;"></i>
-              </div>
-              <a href="service-details.html" class="stretched-link">
-                <h3>Logo Design</h3>
-              </a>
-              <p>We offer creative and professional logo design services to help establish a memorable identity for your brand, ensuring it stands out in the market.</p>
-            </div>
-          </div><!-- End Service Item -->
-    
-          <!-- Video Editing Service -->
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-film" style="color: #6610f2;"></i>
-              </div>
-              <a href="service-details.html" class="stretched-link">
-                <h3>Video Editing</h3>
-              </a>
-              <p>Our expert video editors create engaging, high-quality videos that help your brand effectively communicate its message and engage the audience.</p>
-            </div>
-          </div><!-- End Service Item -->
-    
-          <!-- Cybersecurity Service -->
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-shield-lock" style="color: #f3268c;"></i>
-              </div>
-              <a href="service-details.html" class="stretched-link">
-                <h3>Cybersecurity</h3>
-              </a>
-              <p>We provide robust cybersecurity solutions to protect your website from online threats, ensuring your business data is secure.</p>
-            </div>
-          </div><!-- End Service Item -->
-    
+     <!-- Section Title -->
+<div class="container section-title" data-aos="fade-up">
+  <h2>Our Services</h2>
+  <p>What We Offer</p>
+</div><!-- End Section Title -->
+
+<div class="container">
+
+  <div class="row gy-4">
+
+    <!-- Web Development Service -->
+    <div class="col-lg-4 col-md-6 service-item-wrapper" id="service-website-development" data-aos="fade-up" data-aos-delay="100">
+      <div class="service-item position-relative">
+        <div class="icon">
+          <i class="bi bi-house-door" style="color: #0dcaf0;"></i>
         </div>
-    
+        <a href="individualservices.html" class="stretched-link service-link" data-id="67b8b54ee419fbb8fca0238a">
+          <h3>Website Development</h3>
+        </a>
+        <p>We specialize in building fast, responsive websites that are not only visually appealing but also optimized for performance. With our AI integration, we ensure your website loads in record time.</p>
       </div>
-    
+    </div><!-- End Service Item -->
+
+    <!-- Web Design Service -->
+    <div class="col-lg-4 col-md-6 service-item-wrapper" id="service-web-design" data-aos="fade-up" data-aos-delay="200">
+      <div class="service-item position-relative">
+        <div class="icon">
+          <i class="bi bi-paint-bucket" style="color: #fd7e14;"></i>
+        </div>
+        <a href="individualservices.html" class="stretched-link service-link" data-id="service-web-design">
+          <h3>Web Design</h3>
+        </a>
+        <p>Our team creates modern, user-friendly, and stunning designs that cater to your brand's identity and offer seamless navigation for your visitors.</p>
+      </div>
+    </div><!-- End Service Item -->
+
+    <!-- AI Integration Service -->
+    <div class="col-lg-4 col-md-6 service-item-wrapper" id="service-ai-integration" data-aos="fade-up" data-aos-delay="300">
+      <div class="service-item position-relative">
+        <div class="icon">
+          <i class="bi bi-brain" style="color: #20c997;"></i>
+        </div>
+        <a href="individualservices.html" class="stretched-link service-link" data-id="service-ai-integration">
+          <h3>AI Integration</h3>
+        </a>
+        <p>We integrate cutting-edge AI technologies into websites, offering smarter features, better user experience, and faster processing.</p>
+      </div>
+    </div><!-- End Service Item -->
+
+    <!-- Logo Design Service -->
+    <div class="col-lg-4 col-md-6 service-item-wrapper" id="service-logo-design" data-aos="fade-up" data-aos-delay="400">
+      <div class="service-item position-relative">
+        <div class="icon">
+          <i class="bi bi-vector-pen" style="color: #df1529;"></i>
+        </div>
+        <a href="individualservices.html" class="stretched-link service-link" data-id="service-logo-design">
+          <h3>Logo Design</h3>
+        </a>
+        <p>We offer creative and professional logo design services to help establish a memorable identity for your brand, ensuring it stands out in the market.</p>
+      </div>
+    </div><!-- End Service Item -->
+
+    <!-- Video Editing Service -->
+    <div class="col-lg-4 col-md-6 service-item-wrapper" id="service-video-editing" data-aos="fade-up" data-aos-delay="500">
+      <div class="service-item position-relative">
+        <div class="icon">
+          <i class="bi bi-film" style="color: #6610f2;"></i>
+        </div>
+        <a href="individualservices.html" class="stretched-link service-link" data-id="service-video-editing">
+          <h3>Video Editing</h3>
+        </a>
+        <p>Our expert video editors create engaging, high-quality videos that help your brand effectively communicate its message and engage the audience.</p>
+      </div>
+    </div><!-- End Service Item -->
+
+    <!-- Cybersecurity Service -->
+    <div class="col-lg-4 col-md-6 service-item-wrapper" id="service-cybersecurity" data-aos="fade-up" data-aos-delay="600">
+      <div class="service-item position-relative">
+        <div class="icon">
+          <i class="bi bi-shield-lock" style="color: #f3268c;"></i>
+        </div>
+        <a href="individualservices.html" class="stretched-link service-link" data-id="service-cybersecurity">
+          <h3>Cybersecurity</h3>
+        </a>
+        <p>We provide robust cybersecurity solutions to protect your website from online threats, ensuring your business data is secure.</p>
+      </div>
+    </div><!-- End Service Item -->
+
+  </div>
+</div>
+
+
     </section>
     <!-- /Services Section -->
 
@@ -640,7 +625,7 @@
             <li class="na">SEO Optimization</li>
           </ul>
           <div class="btn-wrap">
-            <a href="#" class="btn-buy">Buy Now</a>
+            <a href="userSignup.html" class="btn-buy">Buy Now</a>
           </div>
         </div>
       </div><!-- End Pricing Item -->
@@ -658,7 +643,7 @@
             <li class="na">Real-time Updates</li>
           </ul>
           <div class="btn-wrap">
-            <a href="#" class="btn-buy">Buy Now</a>
+            <a href="userSignup.html" class="btn-buy">Buy Now</a>
           </div>
         </div>
       </div><!-- End Pricing Item -->
@@ -676,7 +661,7 @@
             <li>1 Revision</li>
           </ul>
           <div class="btn-wrap">
-            <a href="#" class="btn-buy">Buy Now</a>
+            <a href="userSignup.html" class="btn-buy">Buy Now</a>
           </div>
         </div>
       </div><!-- End Pricing Item -->
@@ -695,7 +680,7 @@
             <li class="na">Content Optimization</li>
           </ul>
           <div class="btn-wrap">
-            <a href="#" class="btn-buy">Buy Now</a>
+            <a href="userSignup.html" class="btn-buy">Buy Now</a>
           </div>
         </div>
       </div><!-- End Pricing Item -->
@@ -834,8 +819,7 @@
           <div class="member-img">
             <img src="assets/team_image/bharat_agrawal.jpg" class="img-fluid" alt="">
             <div class="social">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
+              
               <a href=""><i class="bi bi-instagram"></i></a>
               <a href=""><i class="bi bi-linkedin"></i></a>
             </div>
@@ -856,8 +840,7 @@
           <div class="member-img">
             <img src="assets/team_image/charitra_patidar.jpg" class="img-fluid" alt="">
             <div class="social">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
+            
               <a href=""><i class="bi bi-instagram"></i></a>
               <a href=""><i class="bi bi-linkedin"></i></a>
             </div>
@@ -878,8 +861,7 @@
           <div class="member-img">
             <img src="assets/team_image/priyanshu_sharma.jpg" class="img-fluid" alt="">
             <div class="social">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
+             
               <a href=""><i class="bi bi-instagram"></i></a>
               <a href=""><i class="bi bi-linkedin"></i></a>
             </div>
@@ -900,8 +882,7 @@
           <div class="member-img">
             <img src="assets/team_image/shivam_kumar.jpg" class="img-fluid" alt="">
             <div class="social">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
+            
               <a href=""><i class="bi bi-instagram"></i></a>
               <a href=""><i class="bi bi-linkedin"></i></a>
             </div>
@@ -914,134 +895,29 @@
         </div>
       </div><!-- End Team Member -->
 
+      <!-- Parmeshwar lal -->
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
+        <div class="team-member">
+          <div class="member-img">
+            <img src="assets/team_image/parmeshvar_lal.png" class="img-fluid" alt="">
+            <div class="social">
+            
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="member-info">
+            <h4>parmeshvar Lal</h4>
+            <span>API Engineer & DevOps Specialist </span>
+            <p>System, application, middleware, utility, embedded, enterprise, web, mobile, AI, cloud.</p>
+          </div>
+        </div>
+      </div><!-- End Team Member -->
     </div>
 
   </div>
 
 </section><!-- /Team Section -->
-
-    <!-- Recent Posts Section -->
-<section id="recent-posts" class="recent-posts section">
-
-  <!-- Section Title -->
-  <div class="container section-title" data-aos="fade-up">
-    <h2>Recent Posts</h2>
-    <p>Recent Blog Posts<br></p>
-  </div><!-- End Section Title -->
-
-  <div class="container">
-
-    <div class="row gy-4">
-
-      <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-        <article>
-
-          <div class="post-img">
-            <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
-          </div>
-
-          <p class="post-category">Tech Trends</p>
-
-          <h2 class="title">
-            <a href="blog-details.html">Exploring the Future of AI in Web Development</a>
-          </h2>
-
-          <div class=" d-flex align-items-center">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyP62RjdtcYgudg0AhQvEOKf75k1zlUvNtTw&s" alt="" class="img-fluid post-author-img flex-shrink-0">
-            <div class="post-meta">
-              <p class="post-author">GitHub</p>
-              <p class="post-date">
-                <time datetime="2025-01-15">Jan 15, 2025</time>
-              </p>
-            </div>
-          </div>
-
-        </article>
-      </div><!-- End post list item -->
-
-      <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-        <article>
-
-          <div class="post-img">
-            <img src="assets/img/blog/blog-2.jpg" alt="" class="img-fluid">
-          </div>
-
-          <p class="post-category">Business</p>
-
-          <h2 class="title">
-            <a href="blog-details.html">How Digital Transformation is Revolutionizing Freelancing</a>
-          </h2>
-
-          <div  class="  d-flex align-items-center">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnoN0bogYDQyjwsurRLVNwf28dVuA3F2CIAw&s" alt="" class="img-fluid post-author-img flex-shrink-0">
-            <div class="post-meta">
-              <p class="post-author">Linkdin</p>
-              <p class="post-date">
-                <time datetime="2025-01-17">Jan 17, 2025</time>
-              </p>
-            </div>
-          </div>
-
-        </article>
-      </div><!-- End post list item -->
-
-      <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-        <article>
-
-          <div class="post-img">
-            <img src="assets/img/blog/blog-3.jpg" alt="" class="img-fluid">
-          </div>
-
-          <p class="post-category">Design</p>
-
-          <h2 class="title">
-            <a href="blog-details.html">Mastering Responsive Design: Tips and Techniques</a>
-          </h2>
-
-          <div class="  d-flex align-items-center">
-            <img src="https://europlakatbh.ba/wp-content/uploads/profile-square-extra-small.png" alt="" class="img-fluid post-author-img flex-shrink-0">
-            <div class="post-meta">
-              <p class="post-author">Instagram</p>
-              <p class="post-date">
-                <time datetime="2025-01-18">Jan 18, 2025</time>
-              </p>
-            </div>
-          </div>
-
-        </article>
-      </div><!-- End post list item -->
-
-      <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-        <article>
-
-          <div class="post-img">
-            <img src="assets/img/blog/blog-4.jpg" alt="" class="img-fluid">
-          </div>
-
-          <p class="post-category">Security</p>
-
-          <h2 class="title">
-            <a href="blog-details.html">Best Practices for Securing Your Web Applications</a>
-          </h2>
-
-          <div class="  d-flex align-items-center">
-            <img src="https://www.kingrosales.com/wp-content/uploads/2018/05/king-rosales-profile-photo-square.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
-            <div class="post-meta">
-              <p class="post-author">Youtube</p>
-              <p class="post-date">
-                <time datetime="2025-01-19">Jan 19, 2025</time>
-              </p>
-            </div>
-          </div>
-
-        </article>
-      </div><!-- End post list item -->
-
-    </div><!-- End recent posts list -->
-
-  </div>
-
-</section><!-- /Recent Posts Section -->
 
   <!-- Contact Section -->
 <section id="contact" class="contact section">
@@ -1119,26 +995,6 @@
 
   </main>
 
-  <footer id="footer" class="footer dark-background">
-    <div class="container">
-      <h3 class="sitename">MMG</h3>
-      <p>MMG is dedicated to delivering innovative solutions that empower businesses and individuals alike. Our team focuses on creating high-quality services that drive success, ensuring every project exceeds expectations. Join us on a journey of progress and excellence.</p>
-
-      <div class="social-links d-flex justify-content-center">
-        <a href=""><i class="bi bi-twitter-x"></i></a>
-        <a href=""><i class="bi bi-facebook"></i></a>
-        <a href=""><i class="bi bi-instagram"></i></a>
-        <a href=""><i class="bi bi-skype"></i></a>
-        <a href=""><i class="bi bi-linkedin"></i></a>
-      </div>
-      <div class="container">
-        <div class="copyright">
-          <span>Copyright</span> <strong class="px-1 sitename">MMG</strong> <span>All Rights Reserved 2024</span>
-        </div>
-       
-      </div>
-    </div>
-  </footer>
   
 
   <!-- Scroll Top -->
@@ -1148,8 +1004,8 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
+
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
@@ -1159,6 +1015,21 @@
   <!-- Main JS File -->
    
   <script src="assets/js/main.js"></script>
+  <!-- script for the what we offer buttons  -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const serviceLinks = document.querySelectorAll(".service-link");
+  
+      serviceLinks.forEach((link) => {
+        link.addEventListener("click", function() {
+          const serviceId = this.getAttribute("data-id");
+          localStorage.setItem("selectedServiceId", serviceId);
+        
+        });
+      });
+    });
+  </script>
+  
 <script>
   document.getElementById("contactForm").addEventListener("submit", async function (e) {
     e.preventDefault();

@@ -4,23 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Deadlines</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 20px;
+            background-color: black;
+            color: white;
         }
         .deadline-list {
             list-style: none;
             padding: 0;
         }
         .deadline-item {
-            border: 1px solid #ddd;
+            border: 1px solid cyan;
             padding: 15px;
             margin: 10px 0;
             border-radius: 5px;
-            background-color: #f9f9f9;
+            background-color: rgba(0, 255, 255, 0.1);
             cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .deadline-item:hover {
+            background-color: rgba(0, 255, 255, 0.2);
         }
         .popup {
             display: none;
@@ -28,27 +32,36 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: white;
+            background: black;
             padding: 20px;
-            border: 1px solid #ddd;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border: 2px solid cyan;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            color: white;
+            border-radius: 10px;
         }
         .popup button {
             margin-top: 10px;
+            background-color: cyan;
+            color: black;
+            border: none;
+        }
+        .popup button:hover {
+            background-color: darkcyan;
         }
     </style>
 </head>
-<body>
-    <h1>Project Deadlines</h1>
+<body class="container mt-4">
+    <h1 class="text-center mb-4 text-cyan">Project Deadlines</h1>
     <ul id="deadline-container" class="deadline-list"></ul>
     
     <div id="popup" class="popup">
-        <h2 id="popup-title"></h2>
+        <h2 id="popup-title" class="text-cyan"></h2>
         <p id="popup-description"></p>
-        <p><strong>Deadline:</strong> <span id="popup-deadline"></span></p>
-        <button onclick="closePopup()">Close</button>
+        <p><strong class="text-cyan">Deadline:</strong> <span id="popup-deadline"></span></p>
+        <button class="btn" onclick="closePopup()">Close</button>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", async function () {
             const token = localStorage.getItem("token");
@@ -79,7 +92,7 @@
                 allProjects.forEach(project => {
                     const listItem = document.createElement("li");
                     listItem.classList.add("deadline-item");
-                    listItem.innerHTML = `<strong>${project.projectName}</strong> - ${new Date(project.deadline).toLocaleDateString()}`;
+                    listItem.innerHTML = `<strong class="text-cyan">${project.projectName}</strong> - ${new Date(project.deadline).toLocaleDateString()}`;
                     listItem.onclick = () => openPopup(project);
                     container.appendChild(listItem);
                 });

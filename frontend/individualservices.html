@@ -30,62 +30,315 @@
         <link href="assets/css/main.css" rel="stylesheet">
         <link href="assets/css/services.css" rel="stylesheet">
       
-      
-      </head>
-<body>
-
-    <div id="indi-service" class="indi-service">
-        <h2 id="service-title">Loading...</h2>
-        <img id="service-img" src="" alt="Service Image">
-        <p id="service-description"></p>
-        <div id="service-pricing"></div>
-    </div>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const serviceId = localStorage.getItem('selectedServiceId'); // LocalStorage से ID प्राप्त करें
-        
-            if (!serviceId) {
-                document.body.innerHTML = "<p>Service not found.</p>";
-                return;
+        <style>
+            #service-title{
+                color: aqua;
+                font-size: 3rem;
             }
-        
-            // Fetch service details
-            fetch(`http://localhost:3000/api/services/${serviceId}`)
-                .then(response => response.json())
-                .then(service => {
-                    document.getElementById('service-title').textContent = service.title;
-                    document.getElementById('service-img').src = service.image;
-                    document.getElementById('service-description').textContent = service.longDescription;
-        
-                    const pricingContainer = document.getElementById('service-pricing');
-                    pricingContainer.innerHTML = ""; // पुराना डेटा क्लियर करें
-        
-                    if (service.pricing && typeof service.pricing === "object") {
-                        Object.keys(service.pricing).forEach(planType => {
-                            const planDiv = document.createElement("div");
-                            planDiv.classList.add("pricing-item");
-                            planDiv.innerHTML = `<h4>${planType} Plan:</h4>`;
-        
-                            const planList = document.createElement("ul");
-                            service.pricing[planType].forEach(point => {
-                                const listItem = document.createElement("li");
-                                listItem.textContent = point;
-                                planList.appendChild(listItem);
-                            });
-        
-                            planDiv.appendChild(planList);
-                            pricingContainer.appendChild(planDiv);
-                        });
-                    } else {
-                        pricingContainer.innerHTML = "<p>No pricing information available.</p>";
-                    }
-                })
-                .catch(error => console.error('❌ Error fetching service details:', error));
-        });
-        </script>
-        
-    
-</body>
+            #service-description{
+                color: whitesmoke;
+                font-size: 1.5rem;
+            }
+            .card{
+                background-color: black;
+            }
+            .design {
+                color: #fff;
+                background-color:black;
+                border: 1px solid aqua;
+            }
+            .design :first-child{
+                color: white;
+                
+            }
 
+            #about-description{
+                color: aqua;
+            }
+            body {
+                font-family: Roboto, system-ui,'Poppins', sans-serif;
+                line-height: 1.6;
+                color: #333;
+                
+            }
+
+            .indi-service {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 2rem;
+            }
+
+            h2, h3 {
+                color: #2c3e50;
+                margin-bottom: 1.5rem;
+                text-align: center;
+                font-weight: 600;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease;
+            }
+
+            img:hover {
+                transform: scale(1.05);
+            }
+
+            p {
+                margin-bottom: 1.5rem;
+            }
+
+            section {
+                background-color: #fff;
+                border-radius: 8px;
+                padding: 2rem;
+                margin-bottom: 2rem;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+            }
+
+            section:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            .card-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1.5rem;
+                justify-content: center;
+            }
+
+            .card {
+                background-color:black;
+                border-radius: 8px;
+                padding: 1.5rem;
+                width: calc(33.333% - 1rem);
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+                border: 2px solid wheat;
+
+            }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            ul {
+                padding-left: 1.5rem;
+            }
+
+            li {
+                margin-bottom: 0.5rem;
+                
+            }
+
+            .pricing-container {
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                gap: 1.5rem;
+            }
+
+            .pricing-card {
+                background-color: black;
+                border-radius: 8px;
+                padding: 1.5rem;
+                width: calc(33.333% - 1rem);
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+                border: 2px solid wheat;
+            }
+
+            .pricing-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            .pricing-card h4 {
+                color: #2c3e50;
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+
+            /* Animations */
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+
+            @keyframes slideIn {
+                from { transform: translateY(50px); opacity: 0; }
+                to { transform: translateY(0); opacity: 1; }
+            }
+
+            .indi-service > * {
+                animation: fadeIn 1s ease-out;
+            }
+
+            section {
+                animation: slideIn 1s ease-out;
+            }
+
+            /* Responsive design */
+            @media (max-width: 768px) {
+                .card, .pricing-card {
+                    width: calc(50% - 1rem);
+                }
+            }
+
+            @media (max-width: 480px) {
+                .card, .pricing-card {
+                    width: 100%;
+                }
+            }
+            /* New animations */
+    @keyframes glow {
+        0% { box-shadow: 0 0 5px wheat; }
+        50% { box-shadow: 0 0 10px wheat, 0 0 10px wheat; }
+        100% { box-shadow: 0 0 5px wheat; }
+    }
+
+    .card:hover, .pricing-card:hover {
+        animation: glow 1.5s infinite;
+    }
+        </style>
+      </head>
+      <body>
+        <div id="indi-service" class="indi-service">
+            <!-- Service Overview -->
+            <h2 id="service-title">Loading...</h2>
+            <img id="service-img" src="" alt="Service Image">
+            <p id="service-description"></p>
+    
+            <!-- About Service -->
+            <section id="about-service " class="design">
+                <h3 id="about-title"></h3>
+                <img id="about-img" src="" alt="About Image">
+                <p id="about-description"></p>
+            </section>
+    
+            <!-- What We Provide -->
+            <section id="what-we-provide" class="design">
+                <h3 id="what-title"></h3>
+                <div id="what-cards" class="card-container"></div>
+                <img id="what-extra-img" src="" alt="Extra Image">
+            </section>
+    
+            <!-- Why You Need This Service -->
+            <section id="service-need" class="design">
+                <h3 id="need-title"></h3>
+                <ul id="need-points"></ul>
+                <img id="need-img" src="" alt="Need Image">
+            </section>
+    
+            <!-- Service Qualities -->
+            <section id="service-qualities" class="design">
+                <h3 id="qualities-title"></h3>
+                <p id="qualities-description"></p>
+                <div id="qualities-cards" class="card-container"></div>
+            </section>
+    
+            <!-- Pricing Section -->
+            <section id="pricing-section" class="design">
+                <h3>Pricing Plans</h3>
+                <div id="pricing-container" class="pricing-container"></div>
+            </section>
+        </div>
+    
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                
+                const ServiceId = localStorage.getItem('selectedServiceId');  // localStorage से ID लो
+            
+               
+                // Fetch service details
+                fetch(`http://localhost:3000/api/services/${ServiceId}`)
+                    .then(response => response.json())
+                    .then(service => {
+                        // Service Overview
+                        document.getElementById('service-title').textContent = service.title;
+                        document.getElementById('service-img').src = service.image;
+                        document.getElementById('service-description').textContent = service.description;
+    
+                        // About Service
+                        document.getElementById('about-title').textContent = service.about_service;
+                        document.getElementById('about-img').src = service.about_service_image;
+                        document.getElementById('about-description').textContent = service.about_service_description;
+    
+                        // What We Provide
+                        document.getElementById('what-title').textContent = service.what_we_provide;
+                        document.getElementById('what-extra-img').src = service.what_we_provide_extra_image;
+                        const whatCardsContainer = document.getElementById('what-cards');
+                        service.what_we_provide_cards.forEach(card => {
+                            const cardDiv = document.createElement('div');
+                            cardDiv.classList.add('card');
+                            cardDiv.innerHTML = `<img src="${card.image}" alt="${card.heading}"><h4>${card.heading}</h4>`;
+                            whatCardsContainer.appendChild(cardDiv);
+                        });
+    
+                        // Why You Need This Service
+                        document.getElementById('need-title').textContent = service.service_need;
+                        document.getElementById('need-img').src = service.service_need_image;
+                        const needPointsList = document.getElementById('need-points');
+                        service.service_need_card.points.forEach(point => {
+                            const li = document.createElement('li');
+                            li.textContent = point;
+                            needPointsList.appendChild(li);
+                        });
+    
+                        // Service Qualities
+                        document.getElementById('qualities-title').textContent = service.service_qualities;
+                        document.getElementById('qualities-description').textContent = service.service_qualities_description;
+                        const qualitiesCardsContainer = document.getElementById('qualities-cards');
+                        service.service_qualities_cards.forEach(card => {
+                            const cardDiv = document.createElement('div');
+                            cardDiv.classList.add('card');
+                            const ul = document.createElement('ul');
+                            card.points.forEach(point => {
+                                const li = document.createElement('li');
+                                li.textContent = point;
+                                ul.appendChild(li);
+                            });
+                            cardDiv.appendChild(ul);
+                            qualitiesCardsContainer.appendChild(cardDiv);
+                        });
+    
+                        // Pricing Section
+                        const pricingContainer = document.getElementById('pricing-container');
+                        pricingContainer.innerHTML = ""; // Clear previous pricing data
+    
+                        if (service.pricing && typeof service.pricing === "object") {
+                            Object.keys(service.pricing).forEach(planType => {
+                                const planDiv = document.createElement("div");
+                                planDiv.classList.add("pricing-card");
+                                planDiv.innerHTML = `<h4>${planType.charAt(0).toUpperCase() + planType.slice(1)} Plan</h4>`;
+    
+                                const planList = document.createElement("ul");
+                                service.pricing[planType].forEach((item, index) => {
+                                    const listItem = document.createElement("li");
+    
+                                    // Check if the value is 6999, format it differently
+                                    listItem.textContent = typeof item === "number" && item === 6999 ? `$${item}` : item;
+                                    
+                                    planList.appendChild(listItem);
+                                });
+    
+                                planDiv.appendChild(planList);
+                                pricingContainer.appendChild(planDiv);
+                            });
+                        } else {
+                            pricingContainer.innerHTML = "<p>No pricing information available.</p>";
+                        }
+                    })
+                    .catch(error => console.error('❌ Error fetching service details:', error));
+            });
+        </script>
+    
+    </body>
+    
 </html>

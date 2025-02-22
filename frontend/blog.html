@@ -1,9 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog Page</title>
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>MMG | Freelancing</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+     
+      
+        <!-- Favicons -->
+        <link href="assets/img/favicon.ico" rel="icon">
+        <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+      
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com" rel="preconnect">
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      
+        <!-- Vendor CSS Files -->
+        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+        <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+        <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+      
+        <!-- Main CSS File -->
+        <link href="assets/css/main.css" rel="stylesheet">
+        <link rel="stylesheet" href="assets/css/slideshow.css">
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -199,6 +225,104 @@
   </style>
 </head>
 <body>
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+  
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/favicon_logo/android-chrome-512x512.png" alt="">
+      </a>
+  
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="/" >Home</a></li>
+          <li><a href="/services.html" >Services</a></li>
+          <li><a href="/client.html " >Clients</a></li>
+          <li><a href="/portfolio.html" >Portfolio</a></li>
+          <li><a href="/team.html" >Team</a></li>
+          <li><a href="/blog.html" class="active">Blog</a></li>
+          <li class="dropdown">
+            <a href="#"><span>Services</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="#" id="web-dev" class="service-item" data-id="67b8b54ee419fbb8fca0238a">Web Development</a></li>
+              
+                  <li><a href="#" id="ui-ux" class="service-item" data-id="65d788f1b2e4a1c123450002">UI/UX Design</a></li>
+                  <li><a href="#" id="logo-design" class="service-item" data-id="665d788f1b2e4a1c123450002">Logo Design</a></li>
+                  <li><a href="#" id="graphic-design" class="service-item" data-id="65d788f1b2e4a1c123450004">Graphic Design</a></li>
+                  <li><a href="#" id="banner-design" class="service-item" data-id="65d788f1b2e4a1c123450005">Banner Design</a></li>
+                  <li><a href="#" id="custom-templates" class="service-item" data-id="65d788f1b2e4a1c123450006">Custom Templates</a></li>
+                
+             
+              <li><a href="#" id="ecommerce-dev" class="service-item" data-id="65d788f1b2e4a1c123450007">E-commerce Development</a></li>
+              <li><a href="#" id="seo-digital" class="service-item" data-id="65d788f1b2e4a1c123450008">SEO & Digital Marketing</a></li>
+              <li><a href="#" id="website-maintenance" class="service-item" data-id="65d788f1b2e4a1c123450009">Website Maintenance</a></li>
+            </ul>
+          </li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+  
+    
+  
+    </div>
+  
+    
+  </header>
+   
+  <!-- navbar script   -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const serviceItems = document.querySelectorAll('.service-item');
+  
+      serviceItems.forEach(item => {
+        item.addEventListener('click', function (e) {
+          e.preventDefault();
+          const serviceId = this.getAttribute('data-id');
+          localStorage.setItem('selectedServiceId', serviceId); // Store ID in localStorage
+          window.location.href = 'individualservices.html'; // Redirect
+        });
+      });
+    });
+  </script>
+  <!-- crousel section started  -->
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+<div class="carousel-indicators">
+  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+</div>
+<div class="carousel-inner">
+  <div class="carousel-item active">
+    <div class="carousel-caption">
+      <h1>🚀 Apna Business Online Lao</h1>
+      <p>Apne business ko global banayein humare professional website development aur SEO services ke saath.</p>
+      <a href="#contact" class="custom-btn">📩 Contact Us</a>
+    </div>
+  </div>
+  <div class="carousel-item">
+    <div class="carousel-caption">
+      <h1>💼 Professional Websites Banayein</h1>
+      <p>Custom design aur latest technologies ke saath apna online presence banayein.</p>
+      <a href="/services.html" class="custom-btn">🔧 Our Services </a>
+    </div>
+  </div>
+  <div class="carousel-item">
+    <div class="carousel-caption">
+      <h1>✨ SEO Optimization se Growth Paayein</h1>
+      <p>SEO optimized content aur fast-loading websites ke saath apne business ko grow karein.</p>
+      <a href="/portfolio.html" class="custom-btn">👨‍💻 Our Work</a>
+    </div>
+  </div>
+</div>
+<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Previous</span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Next</span>
+</button>
+</div>
     <h1>Blogs</h1>
     <div id="blog-container" class="blog-container"></div>
   

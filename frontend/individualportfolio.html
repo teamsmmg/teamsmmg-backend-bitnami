@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Project Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .project-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .tech-list span {
+            margin-right: 10px;
+            background-color: #e9ecef;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+        .team-list li {
+            list-style: none;
+            margin-bottom: 5px;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const projectContent = document.getElementById('project-content');
+            const projectId = localStorage.getItem('selectedPortfolioId');  // localStorage से ID लो
+
+            if (!projectId) {
+                projectContent.innerHTML = "<p class='text-danger'>❌ Error: No project selected.</p>";
+                return;
+            }
+
+            // 📡 Fetch individual portfolio project data
+            fetch(`http://localhost:3000/api/portfolio/${projectId}`)
+                .then(response => response.json())
+                .then(project => {
+                    projectContent.innerHTML = `
+                        <h1 class="display-5 mb-3">${project.title}</h1>
+                        <img src="${project.image}" alt="Project Image" class="project-image mb-4">
+                        <p><strong>📜 Brief:</strong> ${project.brief || 'No brief provided.'}</p>
+                        <p><strong>📝 Description:</strong> ${project.description}</p>
+                        <p><strong>💡 Technologies Used:</strong> 
+                            <div class="tech-list">${project.technologies.map(tech => `<span>${tech}</span>`).join('')}</div>
+                        </p>
+                        <p><strong>👥 Total Team Members:</strong> ${project.totalMembers || 'N/A'}</p>
+                        <p><strong>👨‍💻 Team Details:</strong></p>
+                        <ul class="team-list">
+                            ${project.teamMembers.map(member => `<li>⭐ <strong>${member.name}</strong> - ${member.role}</li>`).join('')}
+                        </ul>
+                        <p><strong>📅 Duration:</strong> ${new Date(project.startDate).toDateString()} - ${new Date(project.endDate).toDateString()}</p>
+                        <p><strong>🚀 Status:</strong> <span class="badge bg-primary">${project.status}</span></p>
+                        <p><strong>🔗 Project Link:</strong> <a href="${project.link}" target="_blank">${project.link}</a></p>
+                    `;
+                })
+                .catch(error => {
+                    console.error('❌ Error fetching project details:', error);
+                    projectContent.innerHTML = "<p class='text-danger'>⚠️ Unable to load project details.</p>";
+                });
+        });
+    </script>
+</head>
+<body>
+    <div id="project-content" class="container bg-white p-5 shadow rounded-3"></div>
+</body>
+</html>

@@ -13,6 +13,7 @@ const adminBlogRoutes = require('./routes/adminBlogRoutes');
 const portfolioRoute = require('./routes/portfolioRoute');
 const userRoutes = require('./routes/userDashboardRoute');
 const teamActivityRoute = require('./routes/teamActivityRoute');
+const teamActivityAdminRoute = require('./routes/teamActivityAdminRoute');
 const cors = require('cors');
 
 dotenv.config();
@@ -44,3 +45,4 @@ app.use('/api/admin/blogs', adminBlogRoutes);
 app.use('/api/portfolio', portfolioRoute);
 app.use('/api/user', userRoutes);
 app.use('/api/projects', teamActivityRoute);
+app.use('/api/admin', teamActivityAdminRoute);

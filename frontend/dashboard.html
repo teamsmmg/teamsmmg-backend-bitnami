@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TeamsMMG Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/dashboard.css">
    
@@ -169,31 +170,32 @@
         </div>
     </section>
 
-    <!-- Attendance & Leave Management Section -->
-    <section id="attendance" data-aos="fade-right">
-        <h2 class="section-title">Attendance & Leave Management</h2>
-        <div class="row g-4">
-            <div class="col-md-6">
-                <div class="card card-custom h-100" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="card-body">
-                        <h3 class="card-title">Attendance Trackin  <ul id="attendance-list"></ul></h3>
-                        <p class="card-text">Track daily attendance logs and working hours.</p>
-                        <i class="bi bi-calendar-check-fill icon-large"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card card-custom h-100" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="card-body">
-                        <h3 class="card-title">Leave Requests & Approvals <ul id="leave-requests-list"></ul></h3>
-                        <p class="card-text">View and manage leave requests seamlessly.</p>
-                        <i class="bi bi-calendar2-x-fill icon-large"></i>
-                    </div>
+   <!-- Attendance & Leave Management Section -->
+   <section id="attendance" data-aos="fade-right">
+    <h2 class="section-title">Attendance & Leave Management</h2>
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card card-custom h-100" data-aos="zoom-in" data-aos-delay="100">
+                <div class="card-body">
+                    <h3 class="card-title">Attendance Tracking</h3>
+                    <p class="card-text">Track daily attendance logs and working hours.</p>
+                    <i class="bi bi-calendar-check-fill icon-large"></i>
+                    <ul id="attendance-list"></ul>
                 </div>
             </div>
         </div>
-    </section>
-
+        <div class="col-md-6">
+            <div class="card card-custom h-100" data-aos="zoom-in" data-aos-delay="200">
+                <div class="card-body">
+                    <h3 class="card-title">Leave Requests & Approvals</h3>
+                    <p class="card-text">View and manage leave requests seamlessly.</p>
+                    <i class="bi bi-calendar2-x-fill icon-large"></i>
+                    <ul id="leave-requests-list"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
      <!-- Documentation & Resources Section -->
 <section id="resources">
     <div class="container">
