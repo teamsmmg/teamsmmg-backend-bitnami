@@ -15,6 +15,8 @@ const userRoutes = require('./routes/userDashboardRoute');
 const teamActivityRoute = require('./routes/teamActivityRoute');
 const teamActivityAdminRoute = require('./routes/teamActivityAdminRoute');
 const paymentRoutes = require("./routes/paymentRoute");
+const websiteRoutes = require('./routes/websiteRoute');
+
 const cors = require('cors');
 
 dotenv.config();
@@ -28,7 +30,7 @@ app.use(cors());
 app.use(express.json());
 
 // HTTP Server Setup
-const port = 5000;
+const port = 3000;
 app.listen(port, () => {
   console.log(`Server is running fine on http://localhost:${port}`);
 });
@@ -48,3 +50,4 @@ app.use('/api/user', userRoutes);
 app.use('/api/projects', teamActivityRoute);
 app.use('/api/admin', teamActivityAdminRoute);
 app.use("/api/payment", paymentRoutes);
+app.use('/api/website', websiteRoutes);
