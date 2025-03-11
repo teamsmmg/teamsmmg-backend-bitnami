@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Payment</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>Service Payment</h1>
+    <div id="service-container"></div>
+    <button id="pay-now">Pay Now</button>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        const serviceId = "67bc8eb57819a05dad4fc6fd"; // Change dynamically as needed
+const apiUrl = `http://localhost:5000/api/services/${serviceId}`;
+
+document.addEventListener("DOMContentLoaded", async () => {
+    try {
+        const response = await fetch(apiUrl);
+        const service = await response.json();
+
+        const serviceContainer = document.getElementById("service-container");
+        serviceContainer.innerHTML = `
+            <h2>${service.title}</h2>
+            <p>${service.description}</p>
+            <h3>Pricing</h3>
+            <ul>
+                <li>Basic: ₹${service.pricing.basic.individual_pricing}</li>
+                <li>Medium: ₹${service.pricing.medium.individual_pricing}</li>
+                <li>Premium: ₹${service.pricing.premium.individual_pricing}</li>
+            </ul>
+        `;
+
+        document.getElementById("pay-now").addEventListener("click", async () => {
+            const selectedPrice = service.pricing.basic.individual_pricing;
+            console.log("Selected Price:", selectedPrice); // 🔥 Debug
+        
+            try {
+                const orderResponse = await fetch("http://localhost:5000/api/payment/order", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ amount: selectedPrice }),
+                });
+        
+                const orderData = await orderResponse.json();
+                console.log("Order Data:", orderData); // 🔥 Debug
+        
+                if (!orderData.success) throw new Error(orderData.message);
+        
+                const options = {
+                    key: "rzp_live_itlLs4YtGEI1NF",
+                    amount: orderData.order.amount,
+                    currency: "INR",
+                    order_id: orderData.order.id,
+                    handler: async function (response) {
+                        console.log("Payment Response:", response); // 🔥 Debug
+                        await fetch("http://localhost:5000/api/payment/verify", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({
+                                orderId: orderData.order.id,
+                                paymentId: response.razorpay_payment_id,
+                                signature: response.razorpay_signature,
+                            }),
+                        });
+                        alert("Payment Successful!");
+                    },
+                };
+        
+                const rzp = new Razorpay(options);
+                rzp.open();
+            } catch (err) {
+                console.error("Payment Error:", err);
+            }
+        });
+        
+    } catch (error) {
+        console.error("Error fetching service:", error);
+    }
+});
+
+    </script>
+</body>
+</html>

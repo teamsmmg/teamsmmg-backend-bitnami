@@ -249,66 +249,13 @@
                 <div id="pricing-container" class="pricing-container"></div>
             </section>
         </div>
-        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                    
+                
                 const ServiceId = localStorage.getItem('selectedServiceId');  // localStorage से ID लो
             
-        
-                // Handle Payment Function (Replace with actual payment gateway integration)
-                const handlePayment = async (plan, amount) => {
-                    console.log(`💸 Payment started for ${plan} plan: ₹${amount}`); // 🔥 Debug
-        
-                    try {
-                        // 🔗 Create Order on Backend
-                        const orderResponse = await fetch("https://bharatagrawal.shop:3000/api/payment/order", {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify({ amount: amount }),
-                        });
-        
-                        const orderData = await orderResponse.json();
-                        console.log("📝 Order Data:", orderData); // 🔥 Debug
-        
-                        if (!orderData.success) throw new Error(orderData.message);
-        
-                        // ⚙️ Razorpay Options
-                        const options = {
-                            key: "rzp_live_itlLs4YtGEI1NF", // ✅ Live Key
-                            amount: orderData.order.amount,
-                            currency: "INR",
-                            order_id: orderData.order.id,
-                            handler: async function (response) {
-                                console.log("✅ Payment Response:", response); // 🔥 Debug
-                                // 🔒 Verify Payment
-                                const verifyResponse = await fetch("https://bharatagrawal.shop:3000/api/payment/verify", {
-                                    method: "POST",
-                                    headers: { "Content-Type": "application/json" },
-                                    body: JSON.stringify({
-                                        orderId: orderData.order.id,
-                                        paymentId: response.razorpay_payment_id,
-                                        signature: response.razorpay_signature,
-                                    }),
-                                });
-        
-                                const verifyData = await verifyResponse.json();
-                                if (verifyData.success) {
-                                    alert(`🎉 Payment Successful for ${plan} Plan!`);
-                                } else {
-                                    alert("⚠️ Payment verification failed!");
-                                }
-                            },
-                            theme: { color: "#3399cc" },
-                        };
-        
-                        const rzp = new Razorpay(options);
-                        rzp.open();
-                    } catch (err) {
-                        console.error("❌ Payment Error:", err);
-                    }
-                };
-        
+               
                 // Fetch service details
                 fetch(`https://bharatagrawal.shop:3000/api/services/${ServiceId}`)
                     .then(response => response.json())
@@ -317,12 +264,12 @@
                         document.getElementById('service-title').textContent = service.title;
                         document.getElementById('service-img').src = service.image;
                         document.getElementById('service-description').textContent = service.description;
-        
+    
                         // About Service
                         document.getElementById('about-title').textContent = service.about_service;
                         document.getElementById('about-img').src = service.about_service_image;
                         document.getElementById('about-description').textContent = service.about_service_description;
-        
+    
                         // What We Provide
                         document.getElementById('what-title').textContent = service.what_we_provide;
                         document.getElementById('what-extra-img').src = service.what_we_provide_extra_image;
@@ -333,7 +280,7 @@
                             cardDiv.innerHTML = `<img src="${card.image}" alt="${card.heading}"><h4>${card.heading}</h4>`;
                             whatCardsContainer.appendChild(cardDiv);
                         });
-        
+    
                         // Why You Need This Service
                         document.getElementById('need-title').textContent = service.service_need;
                         document.getElementById('need-img').src = service.service_need_image;
@@ -343,7 +290,7 @@
                             li.textContent = point;
                             needPointsList.appendChild(li);
                         });
-        
+    
                         // Service Qualities
                         document.getElementById('qualities-title').textContent = service.service_qualities;
                         document.getElementById('qualities-description').textContent = service.service_qualities_description;
@@ -360,28 +307,28 @@
                             cardDiv.appendChild(ul);
                             qualitiesCardsContainer.appendChild(cardDiv);
                         });
-        
-                        // Pricing Section with Payment Button
+    
+                        // Pricing Section
                         const pricingContainer = document.getElementById('pricing-container');
                         pricingContainer.innerHTML = ""; // Clear previous pricing data
-        
+    
                         if (service.pricing && typeof service.pricing === "object") {
                             Object.keys(service.pricing).forEach(planType => {
-                                const planData = service.pricing[planType];
                                 const planDiv = document.createElement("div");
                                 planDiv.classList.add("pricing-card");
-        
-                                const price = planData.individual_pricing || 0;
-        
-                                planDiv.innerHTML = `
-                                    <h4>${planType.charAt(0).toUpperCase() + planType.slice(1)} Plan</h4>
-                                    <p><strong>Price:</strong> ₹${price}</p>
-                                    <ul>
-                                        ${planData.type.map(item => `<li>${item}</li>`).join('')}
-                                    </ul>
-                                    <button onclick="handlePayment('${planType}', ${price})">Pay ₹${price}</button>
-                                `;
-        
+                                planDiv.innerHTML = `<h4>${planType.charAt(0).toUpperCase() + planType.slice(1)} Plan</h4>`;
+    
+                                const planList = document.createElement("ul");
+                                service.pricing[planType].forEach((item, index) => {
+                                    const listItem = document.createElement("li");
+    
+                                    // Check if the value is 6999, format it differently
+                                    listItem.textContent = typeof item === "number" && item === 6999 ? `$${item}` : item;
+                                    
+                                    planList.appendChild(listItem);
+                                });
+    
+                                planDiv.appendChild(planList);
                                 pricingContainer.appendChild(planDiv);
                             });
                         } else {
@@ -389,12 +336,8 @@
                         }
                     })
                     .catch(error => console.error('❌ Error fetching service details:', error));
-        
-                // 👇 Global Payment Handler (Accessible from inline button onclick)
-                window.handlePayment = handlePayment;
             });
         </script>
-        
     
     </body>
     

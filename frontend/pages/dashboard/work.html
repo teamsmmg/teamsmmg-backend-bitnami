@@ -1,0 +1,1880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon Projects</title>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+      <!-- Bootstrap CSS -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+      <style>
+        .hero-section {
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: white;
+        }
+
+        .hero-title {
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .carousel-inner img {
+            height: 450px;
+            object-fit: cover;
+        }
+
+        .project-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            overflow: hidden;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .project-image {
+            transition: transform 0.3s ease-in-out;
+        }
+        .project-card:hover .project-image {
+            transform: scale(1.1);
+        }
+        .tag {
+            font-size: 0.8rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 20px;
+        }
+        #hackathons {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+          }
+          
+          .hackathon-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+          }
+          
+          .hackathon-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+          }
+          
+          .card-title {
+            color: #2c3e50;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+          }
+          
+          .card-text {
+            color: #34495e;
+            margin-bottom: 8px;
+          }
+          
+          .progress {
+            height: 25px;
+            border-radius: 15px;
+            overflow: hidden;
+          }
+          
+          .progress-bar {
+            transition: width 1.5s ease-in-out;
+            font-weight: bold;
+          }
+          
+          @media (max-width: 768px) {
+            .hackathon-card {
+              margin-bottom: 20px;
+            }
+          }
+          .project-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .project-image {
+            height: 200px;
+            object-fit: cover;
+        }
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            background-color: #007bff;
+            bottom: -10px;
+            left: 25%;
+        }
+        .bg-gradient-dark {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+          }
+          
+          .contribution-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: none;
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+          }
+          
+          .contribution-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+          }
+          
+          .card-title {
+            color: #3498db;
+            font-weight: bold;
+          }
+          
+          .card-subtitle {
+            color: #95a5a6;
+          }
+          
+          .list-group-item {
+            background-color: transparent;
+            border-color: rgba(255, 255, 255, 0.1);
+            color: #ecf0f1;
+          }
+          
+          .btn-primary {
+            background-color: #3498db;
+            border: none;
+            transition: background-color 0.3s ease;
+          }
+          
+          .btn-primary:hover {
+            background-color: #2980b9;
+          }
+          
+          /* Skill bar styles */
+          .skill-bar {
+            height: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            margin-bottom: 10px;
+          }
+          
+          .skill-progress {
+            height: 100%;
+            background-color: #3498db;
+            border-radius: 5px;
+            transition: width 1s ease-in-out;
+          }
+          
+          .work-process {
+            background: linear-gradient(45deg, #1a1a1a, #2c2c2c);
+            padding: 80px 0;
+        }
+        .step {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(255, 165, 0, 0.2);
+        }
+        .icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff8a00, #ff5e03);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin: 0 auto 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .icon::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(45deg);
+            left: -50%;
+            top: -50%;
+        }
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(to right, #ff8a00, #ff5e03);
+        }
+        .step h3 {
+            color: #ff8a00;
+            margin-bottom: 15px;
+        }
+        .step p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Custom styles */
+.innovation-card {
+    perspective: 1000px;
+    height: 200px;
+  }
+  
+  .innovation-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+  
+  .innovation-card:hover .innovation-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .innovation-card-front,
+  .innovation-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 10px;
+  }
+  
+  .innovation-card-back {
+    transform: rotateY(180deg);
+  }
+  
+  .counter-item {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .counter {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  .owl-carousel .item {
+    padding: 10px;
+  }
+  
+  .card {
+    transition: transform 0.3s;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Add some fun background patterns */
+  .crazy-additions {
+    background-image: radial-gradient(circle at 100% 100%, #ffffff 0, #ffffff 3px, transparent 3px),
+      radial-gradient(circle at 0 0, #ffffff 0, #ffffff 3px, transparent 3px);
+    background-size: 20px 20px;
+    background-color: #f8f9fa;
+  }
+  .project-speed-dating {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 80px 0;
+  }
+  
+  .project-speed-dating h2 {
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 50px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .project-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .project-card .card-body {
+    padding: 30px;
+  }
+  
+  .project-card .card-title {
+    color: #333;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+  
+  .project-card .card-text {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  .project-icon {
+    font-size: 48px;
+    color: #764ba2;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  @media (max-width: 768px) {
+    .project-speed-dating {
+      padding: 60px 0;
+    }
+  
+    .project-card {
+      margin-bottom: 30px;
+    }
+  }
+  .bug-card {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+}
+.bug-card:hover {
+    transform: translateY(-5px);
+}
+.bug-header {
+    background-color: #fd7e14;
+    color: white;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.bug-body {
+    padding: 20px;
+}
+.section-title {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 50%;
+    height: 4px;
+    background-color: #fd7e14;
+}
+.bug-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.meme-card {
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+}
+.meme-card:hover {
+    transform: translateY(-5px);
+}
+.meme-img {
+    transition: transform 0.3s ease-in-out;
+}
+.meme-card:hover .meme-img {
+    transform: scale(1.05);
+}
+.meme-text {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+.meme-card:hover .meme-text {
+    opacity: 1;
+}
+.section-title {
+    position: relative;
+    display: inline-block;
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background-color: #007bff;
+}
+.battle-royale,
+.easter-egg {
+  padding: 80px 0;
+}
+
+.project-card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.project-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #3498db;
+}
+
+.progress-bar {
+  height: 4px;
+  background-color: #ecf0f1;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #3498db;
+  animation: progress 2s ease-in-out infinite;
+}
+
+@keyframes progress {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.secret-project {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.secret-project.revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.btn-primary {
+  background-color: #3498db;
+  border-color: #3498db;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+  border-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+.project-superpowers {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  }
+  
+  h2 {
+    font-size: 2.5rem;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .project-card {
+    height: 100%;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-title {
+    color: #007bff;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .card-body {
+    padding: 2rem;
+  }
+  
+  .list-unstyled li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border: none;
+    border-radius: 25px;
+    padding: 0.5rem 1.5rem;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 2rem;
+    }
+  
+    .card-title {
+      font-size: 1.25rem;
+    }
+  }
+  .future-lab {
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    padding: 80px 0;
+}
+.future-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+.future-card:hover {
+    transform: translateY(-10px);
+}
+.future-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+.cta-section {
+    background: linear-gradient(135deg, #000000 0%, #434343 100%);
+    padding: 80px 0;
+}
+.cta-btn {
+    transition: all 0.3s ease;
+}
+.cta-btn:hover {
+    transform: scale(1.05);
+}
+.social-link {
+    color: #fda085;
+    transition: color 0.3s ease;
+}
+.social-link:hover {
+    color: #f6d365;
+}
+.faq-section {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: #ffffff;
+  }
+  
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+  
+  .faq-item {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  .faq-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .faq-question {
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .faq-question .icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .faq-question[aria-expanded="true"] .icon {
+    transform: rotate(45deg);
+  }
+  
+  .collapse {
+    margin-top: 10px;
+  }
+  
+  .collapse p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  
+      </style>
+</head>
+<body class="bg-white text-black">
+    <main class="main">
+
+        <section class="text-center py-5 hero-section" data-aos="fade-up">
+            <h1 class="display-4 fw-bold hero-title">Our Hackathon Projects</h1>
+            <p class="lead mt-3">Explore the innovative solutions we've built during various hackathons.</p>
+            <button class="btn btn-dark mt-3 px-4 py-2">View All Projects</button>
+        </section>
+        
+        <!-- Slideshow -->
+        <div id="projectCarousel" class="carousel slide mt-5" data-bs-ride="carousel" data-aos="fade-up">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://images.pexels.com/photos/5380664/pexels-photo-5380664.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block w-100" alt="Project 1">
+                    <div class="carousel-caption d-none d-md-block">
+                        
+                        <p>Innovative solution for modern challenges.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.pexels.com/photos/1181260/pexels-photo-1181260.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block w-100" alt="Project 2">
+                    <div class="carousel-caption d-none d-md-block">
+                        
+                        <p>Revolutionizing technology through creativity.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.pexels.com/photos/6424590/pexels-photo-6424590.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block w-100" alt="Project 3">
+                    <div class="carousel-caption d-none d-md-block">
+                        
+                        <p>Empowering communities with smarter solutions.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+       <!-- Featured Projects -->
+       
+<!-- Featured Projects -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="display-4 text-center mb-5" data-aos="fade-down">Innovative Projects</h2>
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="flip-left" data-aos-delay="100">
+                <div class="card project-card h-100">
+                    <div class="overflow-hidden">
+                        <img src="https://random.imagecdn.app/500/300" alt="Project 1" class="card-img-top project-image">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title h4">AI-Powered Health Tracker</h3>
+                        <p class="card-text">An innovative tool that tracks health metrics using AI and ML algorithms, providing personalized insights and recommendations.</p>
+                        <div class="mt-3">
+                            <span class="tag bg-primary text-white me-2">#AI</span>
+                            <span class="tag bg-success text-white">#Healthcare</span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0">
+                        <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
+                <div class="card project-card h-100">
+                    <div class="overflow-hidden">
+                        <img src="https://random.imagecdn.app/500/300" alt="Project 2" class="card-img-top project-image">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title h4">Smart Event Planner</h3>
+                        <p class="card-text">A platform to seamlessly plan events with intelligent recommendations, integrating virtual and in-person experiences.</p>
+                        <div class="mt-3">
+                            <span class="tag bg-info text-white me-2">#WebDev</span>
+                            <span class="tag bg-warning text-dark">#Events</span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0">
+                        <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="flip-left" data-aos-delay="300">
+                <div class="card project-card h-100">
+                    <div class="overflow-hidden">
+                        <img src="https://random.imagecdn.app/500/300" alt="Project 3" class="card-img-top project-image">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title h4">EcoMonitor</h3>
+                        <p class="card-text">Monitors environmental conditions and suggests eco-friendly solutions, empowering communities to make sustainable choices.</p>
+                        <div class="mt-3">
+                            <span class="tag bg-danger text-white me-2">#IoT</span>
+                            <span class="tag bg-success text-white">#Environment</span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0">
+                        <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+
+         <!-- Hackathons Participated -->
+    <section class="py-5 bg-light" id="hackathons">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-down">Hackathons Participated</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4" data-aos="fade-right">
+                    <div class="card hackathon-card">
+                        <div class="card-body">
+                            <h3 class="card-title">TechSprint 2024</h3>
+                            <p class="card-text"><strong>Date:</strong> March 2024 | <strong>Duration:</strong> 48 Hours</p>
+                            <p class="card-text"><strong>Team Members:</strong> Bharat, Shivam, Priyanshu, Charitra</p>
+                            <p class="card-text"><strong>Achievements:</strong> Winner</p>
+                            <div class="progress mt-3">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Winner</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4" data-aos="fade-left">
+                    <div class="card hackathon-card">
+                        <div class="card-body">
+                            <h3 class="card-title">CodeJam 2023</h3>
+                            <p class="card-text"><strong>Date:</strong> September 2023 | <strong>Duration:</strong> 36 Hours</p>
+                            <p class="card-text"><strong>Team Members:</strong> Bharat, Charitra</p>
+                            <p class="card-text"><strong>Achievements:</strong> Top 5 Finalist</p>
+                            <div class="progress mt-3">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">Top 5 Finalist</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+       <!-- Project Gallery/Portfolio -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 section-title" data-aos="fade-down">Project Gallery</h2>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card project-card">
+                        <img src="https://random.imagecdn.app/500/300" alt="Project Alpha" class="card-img-top project-image">
+                        <div class="card-body">
+                            <h3 class="card-title">Project Alpha</h3>
+                            <p class="card-text">A revolutionary project that pushes boundaries.</p>
+                        </div>
+                        <div class="project-overlay">
+                            <div>
+                                <h4>Project Alpha</h4>
+                                <p>Click to view details</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card project-card">
+                        <img src="https://random.imagecdn.app/500/301" alt="Project Beta" class="card-img-top project-image">
+                        <div class="card-body">
+                            <h3 class="card-title">Project Beta</h3>
+                            <p class="card-text">An innovative solution for modern problems.</p>
+                        </div>
+                        <div class="project-overlay">
+                            <div>
+                                <h4>Project Beta</h4>
+                                <p>Click to view details</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card project-card">
+                        <img src="https://random.imagecdn.app/500/302" alt="Project Gamma" class="card-img-top project-image">
+                        <div class="card-body">
+                            <h3 class="card-title">Project Gamma</h3>
+                            <p class="card-text">Cutting-edge technology meets user-friendly design.</p>
+                        </div>
+                        <div class="project-overlay">
+                            <div>
+                                <h4>Project Gamma</h4>
+                                <p>Click to view details</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Team Contributions -->
+    <section class="py-5 bg-gradient-dark" id="team-contributions">
+        <div class="container">
+            <h2 class="text-center mb-5 text-light" data-aos="fade-down">Team Contributions</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6 mb-4" data-aos="flip-left" data-aos-delay="100">
+                    <div class="card contribution-card">
+                        <div class="card-body">
+                            <h3 class="card-title">Bharat Agrawal</h3>
+                            <h4 class="card-subtitle mb-2 text-muted">Full Stack Developer</h4>
+                            <p class="card-text">Contributions:</p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Backend API Development</li>
+                                <li class="list-group-item">UI Design Implementation</li>
+                                <li class="list-group-item">Database Architecture</li>
+                            </ul>
+                            <button class="btn btn-primary mt-3 view-more">View More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4" data-aos="flip-right" data-aos-delay="200">
+                    <div class="card contribution-card">
+                        <div class="card-body">
+                            <h3 class="card-title">Shivam Verma</h3>
+                            <h4 class="card-subtitle mb-2 text-muted">Data Scientist</h4>
+                            <p class="card-text">Contributions:</p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">AI Model Building</li>
+                                <li class="list-group-item">Data Cleaning and Preprocessing</li>
+                                <li class="list-group-item">Machine Learning Algorithm Implementation</li>
+                            </ul>
+                            <button class="btn btn-primary mt-3 view-more">View More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="work-process">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Our Work Process</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="step text-center">
+                        <div class="icon">1</div>
+                        <h3>Brainstorm</h3>
+                        <p>Ideating innovative solutions to real-world problems.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="step text-center">
+                        <div class="icon">2</div>
+                        <h3>Design</h3>
+                        <p>Crafting sleek, user-centric interfaces.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="step text-center">
+                        <div class="icon">3</div>
+                        <h3>Develop</h3>
+                        <p>Building robust and scalable solutions.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="step text-center">
+                        <div class="icon">4</div>
+                        <h3>Deploy</h3>
+                        <p>Launching projects that make an impact.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- Section 5: Crazy and Unique Additions -->
+ <section class="crazy-additions py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5" data-aos="fade-down">Crazy and Unique Additions</h2>
+
+        <!-- Wall of Innovation -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-4" data-aos="flip-left" data-aos-delay="100">
+                <div class="innovation-card">
+                    <div class="innovation-card-inner">
+                        <div class="innovation-card-front bg-primary text-white d-flex align-items-center justify-content-center">
+                            <h3>Hover to Reveal</h3>
+                        </div>
+                        <div class="innovation-card-back bg-warning text-dark d-flex align-items-center justify-content-center">
+                            <p>AI-Powered Coffee Maker</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
+                <div class="innovation-card">
+                    <div class="innovation-card-inner">
+                        <div class="innovation-card-front bg-success text-white d-flex align-items-center justify-content-center">
+                            <h3>Hover to Reveal</h3>
+                        </div>
+                        <div class="innovation-card-back bg-info text-dark d-flex align-items-center justify-content-center">
+                            <p>Quantum Computing for Cats</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="flip-left" data-aos-delay="300">
+                <div class="innovation-card">
+                    <div class="innovation-card-inner">
+                        <div class="innovation-card-front bg-danger text-white d-flex align-items-center justify-content-center">
+                            <h3>Hover to Reveal</h3>
+                        </div>
+                        <div class="innovation-card-back bg-secondary text-white d-flex align-items-center justify-content-center">
+                            <p>Time-Traveling Toaster</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hackathon Madness Counter -->
+        <div class="madness-counter text-center mb-5" data-aos="zoom-in">
+            <h3 class="mb-3">Hackathon Madness Stats</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="counter-item">
+                        <h4 class="counter" data-target="15">0</h4>
+                        <p>Hackathons Attended</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="counter-item">
+                        <h4 class="counter" data-target="250">0</h4>
+                        <p>Coffee Cups Consumed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Time Travel Projects -->
+        <div class="time-travel-projects mb-5">
+            <h3 class="text-center mb-4" data-aos="fade-up">Time Travel Projects</h3>
+            <div class="owl-carousel owl-theme" data-aos="fade-up" data-aos-delay="200">
+                <div class="item">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">2023: AI Travel Buddy</h5>
+                            <p class="card-text">Your personal AI companion for all your time-traveling adventures!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">2024: Smart City Dashboard</h5>
+                            <p class="card-text">Control an entire city with just a few clicks. What could go wrong?</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">2025: Sustainable Tech Solutions</h5>
+                            <p class="card-text">Saving the world, one crazy invention at a time!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+   
+
+   <!-- Project Speed Dating Section -->
+   <section class="project-speed-dating py-5">
+    <div class="container">
+        <h2 class="display-4 text-center mb-5" data-aos="fade-down">Project Speed Dating</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4" data-aos="flip-left" data-aos-delay="100">
+                <div class="card project-card">
+                    <div class="card-body">
+                        <h3 class="card-title">Project A</h3>
+                        <p class="card-text">Swipe to explore innovative ideas in record time!</p>
+                        <div class="project-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="flip-left" data-aos-delay="200">
+                <div class="card project-card">
+                    <div class="card-body">
+                        <h3 class="card-title">Project B</h3>
+                        <p class="card-text">Each card provides brief insights into our projects.</p>
+                        <div class="project-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="flip-left" data-aos-delay="300">
+                <div class="card project-card">
+                    <div class="card-body">
+                        <h3 class="card-title">Project C</h3>
+                        <p class="card-text">Explore ideas that redefine innovation.</p>
+                        <div class="project-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5 section-title" data-aos="fade-up">We Broke It to Fix It</h2>
+        <div class="row g-4">
+            <div class="col-md-6" data-aos="fade-right" data-aos-delay="100">
+                <div class="bug-card">
+                    <div class="bug-header">
+                        Bug #101
+                    </div>
+                    <div class="bug-body">
+                        <div class="text-center bug-icon">
+                            <i class="fas fa-bug"></i>
+                        </div>
+                        <h3 class="text-center mb-3">The Hilarious Failure</h3>
+                        <p class="text-center">A mishap that led to our most innovative feature yet. Sometimes, the best ideas come from unexpected places!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-left" data-aos-delay="200">
+                <div class="bug-card">
+                    <div class="bug-header">
+                        Bug #404
+                    </div>
+                    <div class="bug-body">
+                        <div class="text-center bug-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3 class="text-center mb-3">The "Not Found" Discovery</h3>
+                        <p class="text-center">When a missing page became our greatest optimization. Proof that even errors can lead to excellence!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5 section-title" data-aos="fade-down">The Meme Zone</h2>
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="card meme-card shadow">
+                    <img src="https://random.imagecdn.app/500/300" alt="Meme" class="card-img-top meme-img">
+                    <div class="meme-text">
+                        <p class="m-0">"Expectation: Clean Code. Reality: Debugging till dawn."</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card meme-card shadow">
+                    <img src="https://random.imagecdn.app/500/300" alt="Meme" class="card-img-top meme-img">
+                    <div class="meme-text">
+                        <p class="m-0">"When the API works perfectly the first time... Not!"</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="card meme-card shadow">
+                    <img src="https://random.imagecdn.app/500/300" alt="Meme" class="card-img-top meme-img">
+                    <div class="meme-text">
+                        <p class="m-0">"Deploy Friday? Are you sure about that?"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+ <!-- Battle Royale: Projects Edition Section -->
+ <section class="battle-royale py-5">
+    <div class="container">
+        <h2 class="text-center mb-5" data-aos="fade-up">Battle Royale: Projects Edition</h2>
+        <div class="row">
+            <div class="col-md-6 mb-4" data-aos="fade-right">
+                <div class="project-card">
+                    <h3>Project X</h3>
+                    <p>A comprehensive AI solution vs Project Y.</p>
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4" data-aos="fade-left">
+                <div class="project-card">
+                    <h3>Project Y</h3>
+                    <p>Revolutionizing user experiences in mobile apps.</p>
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Easter Egg Hunt Section -->
+<section class="easter-egg py-5">
+    <div class="container text-center">
+        <h2 class="mb-4" data-aos="fade-up">Easter Egg Hunt</h2>
+        <p class="mb-4" data-aos="fade-up" data-aos-delay="100">Find hidden treasures that reveal our secret projects!</p>
+        <div id="secret-project" class="secret-project" data-aos="zoom-in" data-aos-delay="200">
+            <h3>Secret Project Unveiled</h3>
+            <p>Discover the journey behind this hidden gem.</p>
+        </div>
+        <button id="reveal-secret" class="btn btn-primary mt-3" data-aos="fade-up" data-aos-delay="300">Reveal Secret</button>
+    </div>
+</section>
+
+  <!-- Project Superpowers Section -->
+  <section class="project-superpowers py-5">
+    <div class="container">
+        <h2 class="text-center mb-5" data-aos="fade-down">Project Superpowers</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4" data-aos="flip-left" data-aos-delay="100">
+                <div class="card project-card">
+                    <div class="card-body">
+                        <h3 class="card-title">AI-Powered Health Tracker</h3>
+                        <ul class="list-unstyled">
+                            <li><strong>Strength:</strong> Highly accurate health monitoring.</li>
+                            <li><strong>Weakness:</strong> Limited to wearable devices.</li>
+                        </ul>
+                        <button class="btn btn-primary mt-3 learn-more-btn" data-project="health-tracker">Learn More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="flip-left" data-aos-delay="200">
+                <div class="card project-card">
+                    <div class="card-body">
+                        <h3 class="card-title">Event Planning Assistant</h3>
+                        <ul class="list-unstyled">
+                            <li><strong>Strength:</strong> Real-time collaboration features.</li>
+                            <li><strong>Weakness:</strong> High server dependency.</li>
+                        </ul>
+                        <button class="btn btn-primary mt-3 learn-more-btn" data-project="event-planner">Learn More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="flip-left" data-aos-delay="300">
+                <div class="card project-card">
+                    <div class="card-body">
+                        <h3 class="card-title">Eco-Friendly Ride Share</h3>
+                        <ul class="list-unstyled">
+                            <li><strong>Strength:</strong> Promotes sustainable transport.</li>
+                            <li><strong>Weakness:</strong> Limited user base in rural areas.</li>
+                        </ul>
+                        <button class="btn btn-primary mt-3 learn-more-btn" data-project="ride-share">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="projectModalLabel">Project Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Content will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+</div>
+  <!-- Code in Action Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-8">Code in Action</h2>
+      <div class="bg-gray-200 rounded-lg p-8 shadow-lg">
+        <iframe class="w-full h-96" src="https://codesandbox.io/embed/new" title="Live Coding Simulator" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hackathon Hall of Fame Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-8">Hackathon Hall of Fame</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-4 bg-gray-100 rounded-lg shadow-lg">
+          <h3 class="text-xl font-semibold mb-4">EyTechHackathrone</h3>
+          <p class="text-gray-600">Winner: Best Presentation Award</p>
+        </div>
+        <div class="p-4 bg-gray-100 rounded-lg shadow-lg">
+          <h3 class="text-xl font-semibold mb-4">TechSprint 2024</h3>
+          <p class="text-gray-600">Top 5 Finalist</p>
+        </div>
+        <div class="p-4 bg-gray-100 rounded-lg shadow-lg">
+          <h3 class="text-xl font-semibold mb-4">InnoHack 2023</h3>
+          <p class="text-gray-600">Innovation Award</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Moodboard Showcase Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-8">Moodboard Showcase</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-gray-200 rounded-lg p-4 shadow-lg">
+          <img src="https://random.imagecdn.app/500/150" alt="Moodboard Image 1" class="rounded-lg mb-4">
+          <p class="text-gray-600">Inspiration for AI Health Tracker.</p>
+        </div>
+        <div class="bg-gray-200 rounded-lg p-4 shadow-lg">
+          <img src="https://random.imagecdn.app/500/150" alt="Moodboard Image 2" class="rounded-lg mb-4">
+          <p class="text-gray-600">Design inspiration for Event Planner.</p>
+        </div>
+        <div class="bg-gray-200 rounded-lg p-4 shadow-lg">
+          <img src="https://random.imagecdn.app/500/150" alt="Moodboard Image 3" class="rounded-lg mb-4">
+          <p class="text-gray-600">Concept art for Ride Share App.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Future Lab Section -->
+<section class="future-lab">
+    <div class="container">
+        <h2 class="text-center mb-5 display-4 fw-bold" data-aos="fade-up">Future Lab (What's Next?)</h2>
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="flip-left" data-aos-delay="100">
+                <div class="future-card h-100 p-4 text-center">
+                    <div class="future-icon">🚦</div>
+                    <h3 class="h4 mb-3">Smart Traffic System</h3>
+                    <p class="text-muted">Optimizing traffic flow using AI and IoT solutions, reducing congestion and improving urban mobility.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
+                <div class="future-card h-100 p-4 text-center">
+                    <div class="future-icon">🎓</div>
+                    <h3 class="h4 mb-3">Virtual Classroom Assistant</h3>
+                    <p class="text-muted">Enhancing e-learning with personalized AI tutors, adapting to individual learning styles and paces.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="flip-left" data-aos-delay="300">
+                <div class="future-card h-100 p-4 text-center">
+                    <div class="future-icon">🏡</div>
+                    <h3 class="h4 mb-3">Eco-Friendly Smart Homes</h3>
+                    <p class="text-muted">Integrating smart technologies to reduce energy consumption and promote sustainable living practices.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call-to-Action (Footer) Section -->
+<section class="cta-section text-white">
+    <div class="container text-center">
+        <h2 class="mb-4 display-4 fw-bold" data-aos="fade-up">Collaborate With Us</h2>
+        <p class="lead mb-5" data-aos="fade-up" data-aos-delay="100">Looking to collaborate or explore our detailed case studies? Let's connect and shape the future together!</p>
+        <div class="d-flex justify-content-center mb-5" data-aos="zoom-in" data-aos-delay="200">
+            <a href="#" class="btn btn-warning btn-lg me-3 cta-btn">Contact Us</a>
+            <a href="#" class="btn btn-outline-light btn-lg cta-btn">View Case Studies</a>
+        </div>
+        <div class="mt-5" data-aos="fade-up" data-aos-delay="300">
+            <a href="https://linkedin.com" class="social-link me-4 fs-5 text-decoration-none">
+                <i class="fab fa-linkedin"></i> Follow on LinkedIn
+            </a>
+            <a href="https://github.com" class="social-link fs-5 text-decoration-none">
+                <i class="fab fa-github"></i> Follow on GitHub
+            </a>
+        </div>
+    </div>
+</section>
+
+  <!-- New Section: Interactive Timeline of Hackathons -->
+  <section class="bg-gray-100 py-12">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-8">Our Hackathon Journey</h2>
+      <div class="relative">
+        <div class="border-l-4 border-orange-500 absolute h-full left-1/2 transform -translate-x-1/2"></div>
+        <div class="space-y-8">
+          <!-- Timeline Item 1 -->
+          <div class="flex items-center w-full">
+            <div class="w-1/2 text-right pr-8">
+              <h3 class="text-xl font-bold">TechSprint 2024</h3>
+              <p class="text-gray-600">March 2024 - Winner</p>
+              <p class="text-gray-600">Developed a revolutionary health tracker.</p>
+            </div>
+            <div class="w-1/2">
+              <div class="bg-orange-500 w-8 h-8 rounded-full border-4 border-white mx-auto"></div>
+            </div>
+          </div>
+          <!-- Timeline Item 2 -->
+          <div class="flex items-center w-full">
+            <div class="w-1/2">
+              <div class="bg-orange-500 w-8 h-8 rounded-full border-4 border-white mx-auto"></div>
+            </div>
+            <div class="w-1/2 pl-8">
+              <h3 class="text-xl font-bold">CodeFest 2023</h3>
+              <p class="text-gray-600">July 2023 - Top 5 Finalist</p>
+              <p class="text-gray-600">Created a disaster management app using AI.</p>
+            </div>
+          </div>
+          <!-- Timeline Item 3 -->
+          <div class="flex items-center w-full">
+            <div class="w-1/2 text-right pr-8">
+              <h3 class="text-xl font-bold">Hackverse 2022</h3>
+              <p class="text-gray-600">December 2022 - Special Mention</p>
+              <p class="text-gray-600">Innovated a financial literacy chatbot.</p>
+            </div>
+            <div class="w-1/2">
+              <div class="bg-orange-500 w-8 h-8 rounded-full border-4 border-white mx-auto"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-5" data-aos="fade-down">Frequently Asked Questions</h2>
+        <div class="row">
+            <div class="col-lg-6 mb-4" data-aos="fade-right" data-aos-delay="100">
+                <div class="faq-item">
+                    <h3 class="faq-question" data-bs-toggle="collapse" data-bs-target="#faq1">
+                        What kind of projects do you work on?
+                        <span class="icon">+</span>
+                    </h3>
+                    <div id="faq1" class="collapse">
+                        <p>We focus on AI solutions, web and app development, and impactful innovations during hackathons. Our projects range from cutting-edge machine learning applications to responsive web platforms.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4" data-aos="fade-left" data-aos-delay="200">
+                <div class="faq-item">
+                    <h3 class="faq-question" data-bs-toggle="collapse" data-bs-target="#faq2">
+                        Can I collaborate with your team?
+                        <span class="icon">+</span>
+                    </h3>
+                    <div id="faq2" class="collapse">
+                        <p>We're always open to new collaborations. Contact us through the "Collaborate With Us" section above, and we'll get back to you to discuss potential partnerships and projects.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4" data-aos="fade-right" data-aos-delay="300">
+                <div class="faq-item">
+                    <h3 class="faq-question" data-bs-toggle="collapse" data-bs-target="#faq3">
+                        What tools and technologies do you use?
+                        <span class="icon">+</span>
+                    </h3>
+                    <div id="faq3" class="collapse">
+                        <p>Our stack includes React, Node.js, Python, and cutting-edge AI tools. We're always exploring new technologies to stay at the forefront of innovation in software development and artificial intelligence.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4" data-aos="fade-left" data-aos-delay="400">
+                <div class="faq-item">
+                    <h3 class="faq-question" data-bs-toggle="collapse" data-bs-target="#faq4">
+                        Do you participate in virtual hackathons?
+                        <span class="icon">+</span>
+                    </h3>
+                    <div id="faq4" class="collapse">
+                        <p>Yes, we actively participate in both virtual and in-person events. Virtual hackathons allow us to collaborate with a diverse group of developers and innovators from around the world.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    </main>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    
+    <script>
+        // Wait for the DOM to be fully loaded before executing scripts
+document.addEventListener("DOMContentLoaded", () => {
+    // Initialize AOS (Animate On Scroll)
+    initializeAOS()
+  
+    // Add interactivity to hackathon cards
+    setupHackathonCards()
+  
+    // Animate progress bars
+    animateProgressBars()
+  
+    // Setup interactive hover effects
+    setupHoverEffects()
+  
+    // Initialize animated counters
+    initializeCounters()
+  
+    // Setup project cards
+    setupProjectCards()
+  
+    // Add interactive elements to cards
+    setupCardInteractions()
+  
+    // Initialize Owl Carousel
+    initializeOwlCarousel()
+  
+    // Setup innovation cards
+    setupInnovationCards()
+  
+    // Setup Konami code easter egg
+    setupKonamiCode()
+  
+    // Setup secret content reveal
+    setupSecretReveal()
+  
+    // Setup reveal button functionality
+    setupRevealButton()
+  
+    // Add hover effect to project cards
+    setupProjectCardHover()
+  
+    // Add parallax effect to sections
+    setupParallaxEffect()
+  
+    // Handle "Learn More" button clicks
+    setupLearnMoreButtons()
+  
+    // Handle FAQ toggle
+    setupFAQToggle()
+  })
+  
+  // Initialize AOS
+  function initializeAOS() {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100,
+    })
+  }
+  
+  // Setup hackathon cards
+  function setupHackathonCards() {
+    const cards = document.querySelectorAll(".hackathon-card")
+    cards.forEach((card) => {
+      card.addEventListener("mouseenter", () => {
+        card.style.backgroundColor = "#e8f4f8"
+      })
+      card.addEventListener("mouseleave", () => {
+        card.style.backgroundColor = "#fff"
+      })
+      card.addEventListener("click", () => {
+        const title = card.querySelector(".card-title").textContent
+        const details = card.querySelector(".card-text").textContent
+        alert(`${title}\n\n${details}`)
+      })
+    })
+  }
+  
+  // Animate progress bars
+  function animateProgressBars() {
+    const progressBars = document.querySelectorAll(".progress-bar")
+    progressBars.forEach((bar) => {
+      const width = bar.style.width
+      bar.style.width = "0%"
+      setTimeout(() => {
+        bar.style.width = width
+      }, 500)
+    })
+  }
+  
+  // Setup hover effects
+  function setupHoverEffects() {
+    document.querySelectorAll(".step").forEach((step) => {
+      step.addEventListener("mouseenter", () => {
+        step.style.background = "rgba(255, 165, 0, 0.1)"
+      })
+      step.addEventListener("mouseleave", () => {
+        step.style.background = "rgba(255, 255, 255, 0.05)"
+      })
+    })
+  }
+  
+  // Initialize counters
+  function initializeCounters() {
+    document.querySelectorAll(".icon").forEach((icon, index) => {
+      let counter = 0
+      const updateCounter = () => {
+        if (counter < index + 1) {
+          counter++
+          icon.textContent = counter
+          setTimeout(updateCounter, 200)
+        }
+      }
+      icon.addEventListener("mouseenter", updateCounter)
+    })
+  
+    const counters = document.querySelectorAll(".counter")
+    const speed = 200
+  
+    counters.forEach((counter) => {
+      const updateCount = () => {
+        const target = +counter.getAttribute("data-target")
+        const count = +counter.innerText
+        const inc = target / speed
+  
+        if (count < target) {
+          counter.innerText = Math.ceil(count + inc)
+          setTimeout(updateCount, 1)
+        } else {
+          counter.innerText = target
+        }
+      }
+  
+      updateCount()
+    })
+  }
+  
+  // Setup project cards
+  function setupProjectCards() {
+    const projectCards = document.querySelectorAll(".project-card")
+    projectCards.forEach((card) => {
+      card.addEventListener("mouseenter", () => {
+        card.style.transform = "scale(1.05) translateY(-10px)"
+      })
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "scale(1) translateY(0)"
+      })
+      card.addEventListener("click", () => {
+        alert(`Viewing details for ${card.querySelector(".card-title").textContent}`)
+      })
+    })
+  
+    // Simple carousel effect
+    let currentIndex = 0
+    const cards = document.querySelectorAll(".project-card")
+    const totalCards = cards.length
+  
+    function showNextCard() {
+      cards[currentIndex].classList.remove("active")
+      currentIndex = (currentIndex + 1) % totalCards
+      cards[currentIndex].classList.add("active")
+    }
+  
+    setInterval(showNextCard, 3000) // Change card every 3 seconds
+  }
+  
+  // Setup card interactions
+  function setupCardInteractions() {
+    const viewMoreButtons = document.querySelectorAll(".view-more")
+  
+    viewMoreButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const card = this.closest(".card")
+        const cardBody = card.querySelector(".card-body")
+  
+        // Create and append skill bars
+        const skillBars = document.createElement("div")
+        skillBars.className = "skill-bars mt-3"
+        skillBars.innerHTML = `
+          <p>Skills:</p>
+          <div class="skill-bar"><div class="skill-progress" style="width: 0%;" data-width="90%"></div></div>
+          <div class="skill-bar"><div class="skill-progress" style="width: 0%;" data-width="85%"></div></div>
+          <div class="skill-bar"><div class="skill-progress" style="width: 0%;" data-width="80%"></div></div>
+        `
+  
+        cardBody.appendChild(skillBars)
+  
+        // Animate skill bars
+        setTimeout(() => {
+          skillBars.querySelectorAll(".skill-progress").forEach((progress) => {
+            progress.style.width = progress.getAttribute("data-width")
+          })
+        }, 100)
+  
+        // Disable the button
+        this.disabled = true
+        this.textContent = "Skills Added"
+      })
+    })
+  }
+  
+  // Initialize Owl Carousel
+  function initializeOwlCarousel() {
+    $(document).ready(() => {
+      $(".owl-carousel").owlCarousel({
+        loop: true,
+        margin: 20,
+        nav: true,
+        responsive: {
+          0: {
+            items: 1,
+          },
+          600: {
+            items: 2,
+          },
+          1000: {
+            items: 3,
+          },
+        },
+      })
+    })
+  }
+  
+  // Setup innovation cards
+  function setupInnovationCards() {
+    document.querySelectorAll(".innovation-card").forEach((card) => {
+      card.addEventListener("mouseover", () => {
+        card.style.transform = `scale(1.05) rotate(${Math.random() * 5 - 2.5}deg)`
+      })
+      card.addEventListener("mouseout", () => {
+        card.style.transform = "scale(1) rotate(0deg)"
+      })
+    })
+  }
+  
+  // Setup Konami code easter egg
+  function setupKonamiCode() {
+    const konamiCode = [
+      "ArrowUp",
+      "ArrowUp",
+      "ArrowDown",
+      "ArrowDown",
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowLeft",
+      "ArrowRight",
+      "b",
+      "a",
+    ]
+    let konamiCodePosition = 0
+  
+    document.addEventListener("keydown", (e) => {
+      if (e.key === konamiCode[konamiCodePosition]) {
+        konamiCodePosition++
+        if (konamiCodePosition === konamiCode.length) {
+          activateEasterEgg()
+          konamiCodePosition = 0
+        }
+      } else {
+        konamiCodePosition = 0
+      }
+    })
+  }
+  
+  // Activate easter egg
+  function activateEasterEgg() {
+    alert("You found the secret! Here's a virtual high five! ✋")
+    document.body.style.transform = "rotate(180deg)"
+    setTimeout(() => {
+      document.body.style.transform = "rotate(0deg)"
+    }, 3000)
+  }
+  
+  // Setup secret content reveal
+  function setupSecretReveal() {
+    document.getElementById("reveal-secret").addEventListener("click", () => {
+      document.querySelector(".hidden-content").classList.toggle("hidden")
+    })
+  }
+  
+  // Setup reveal button functionality
+  function setupRevealButton() {
+    const revealButton = document.getElementById("reveal-secret")
+    const secretProject = document.getElementById("secret-project")
+    let isRevealed = false
+  
+    revealButton.addEventListener("click", () => {
+      if (!isRevealed) {
+        secretProject.classList.add("revealed")
+        revealButton.textContent = "Hide Secret"
+        isRevealed = true
+      } else {
+        secretProject.classList.remove("revealed")
+        revealButton.textContent = "Reveal Secret"
+        isRevealed = false
+      }
+    })
+  }
+  
+  // Add hover effect to project cards
+  function setupProjectCardHover() {
+    const projectCards = document.querySelectorAll(".project-card")
+    projectCards.forEach((card) => {
+      card.addEventListener("mouseenter", function () {
+        this.style.transform = "translateY(-10px) rotate(2deg)"
+      })
+      card.addEventListener("mouseleave", function () {
+        this.style.transform = "translateY(0) rotate(0)"
+      })
+    })
+  }
+  
+  // Add parallax effect to sections
+  function setupParallaxEffect() {
+    window.addEventListener("scroll", () => {
+      const scrollPosition = window.pageYOffset
+      document.querySelector(".battle-royale").style.backgroundPositionY = scrollPosition * 0.5 + "px"
+      document.querySelector(".easter-egg").style.backgroundPositionY = -scrollPosition * 0.2 + "px"
+    })
+  }
+  
+  // Handle "Learn More" button clicks
+  function setupLearnMoreButtons() {
+    const projectDetails = {
+      "health-tracker": {
+        title: "AI-Powered Health Tracker",
+        description:
+          "Our AI-powered health tracker uses advanced machine learning algorithms to provide highly accurate health monitoring. It can predict potential health issues and offer personalized recommendations for improving overall well-being.",
+        features: [
+          "Real-time health data analysis",
+          "Personalized health recommendations",
+          "Integration with various wearable devices",
+          "Secure data encryption and storage",
+        ],
+      },
+      "event-planner": {
+        title: "Event Planning Assistant",
+        description:
+          "The Event Planning Assistant streamlines the process of organizing events by offering real-time collaboration features. It helps teams coordinate tasks, manage guest lists, and track budgets efficiently.",
+        features: [
+          "Real-time collaboration tools",
+          "Automated task reminders",
+          "Integrated budget management",
+          "Vendor and venue database",
+        ],
+      },
+      "ride-share": {
+        title: "Eco-Friendly Ride Share",
+        description:
+          "Our Eco-Friendly Ride Share platform promotes sustainable transportation by connecting users for carpooling and shared rides. It helps reduce carbon emissions and traffic congestion in urban areas.",
+        features: [
+          "Smart route optimization",
+          "Carbon footprint tracking",
+          "Reward system for frequent users",
+          "Integration with public transport schedules",
+        ],
+      },
+    }
+  
+    const learnMoreButtons = document.querySelectorAll(".learn-more-btn")
+    const modal = new bootstrap.Modal(document.getElementById("projectModal"))
+  
+    learnMoreButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const project = this.getAttribute("data-project")
+        const details = projectDetails[project]
+  
+        const modalTitle = document.querySelector("#projectModal .modal-title")
+        const modalBody = document.querySelector("#projectModal .modal-body")
+  
+        modalTitle.textContent = details.title
+        modalBody.innerHTML = `
+          <p>${details.description}</p>
+          <h6>Key Features:</h6>
+          <ul>
+            ${details.features.map((feature) => `<li>${feature}</li>`).join("")}
+          </ul>
+        `
+  
+        modal.show()
+      })
+    })
+  }
+  
+  // Handle FAQ toggle
+  function setupFAQToggle() {
+    const faqQuestions = document.querySelectorAll(".faq-question")
+    faqQuestions.forEach((question) => {
+      question.addEventListener("click", function () {
+        const icon = this.querySelector(".icon")
+        if (this.getAttribute("aria-expanded") === "true") {
+          icon.textContent = "+"
+        } else {
+          icon.textContent = "−"
+        }
+      })
+    })
+  }
+  
+  
+    </script>
+</body>
+</html>
